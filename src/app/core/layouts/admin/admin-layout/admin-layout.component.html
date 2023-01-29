@@ -1,0 +1,87 @@
+<div *ngIf="status" class="loader-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+<header id="header">
+    <nav class="navbar navbar-custom fixed-top navbar-expand-lg py-3">
+        <div class="container-fluid mx-2">
+            <div class="navbar-brand">
+                <button type="button" class="btn menu-icon" (click)="opened=!opened">
+
+                    <img src="assets/menu.svg" alt="">
+                </button>
+            </div>
+            <a class="navbar-brand" routerLink="" *ngIf="!authService.isLogin()">
+                <img src="assets/logo.jpg" alt="" width="108" height="20">
+            </a>
+            <a class="navbar-brand" routerLink="/main/job-find" *ngIf="authService.isLogin()">
+                <img src="assets/logo.jpg" alt="" width="108" height="20">
+            </a>
+            <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li class="nav-item dropdown notif" hidden>
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets/bell.svg" alt="" height="25px">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown username">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" class="d-flex">
+                            <span>{{ userData.jobseekerFirstName }}</span>
+                            &nbsp;
+                            <span>{{ userData.jobseekerLastName }}</span>
+                            <img src="assets/dropdown.svg" alt="" height="25px">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li> <a class="dropdown-item" routerLink="settings/{{userData.jobseekerId}}"><img
+                                        src="assets/setting.svg" alt=""> Settings</a></li>
+                            <li> <a class="dropdown-item text-danger" (click)="logout()"><img
+                                        src="assets/logout.svg" alt=""> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<mat-sidenav-container autosize>
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <div class="sidebar">
+            <div class="shortcut-links">
+                <a [routerLinkActive]="'active'" routerLink="job-find/"><img src="assets/find2.svg" alt="">
+                    <p>Find Jobs</p>
+                </a>
+                <a [routerLinkActive]="'active'" routerLink="profile/{{userData.jobseekerId}}"><img
+                        src="assets/profile.svg" alt="">
+                    <p>Profile</p>
+                </a>
+                <a [routerLinkActive]="'active'" routerLink="applied-job/{{userData.jobseekerId}}"><img
+                        src="assets/bag.svg" alt="">
+                    <p>Applied Jobs</p>
+                </a>
+                <a href="" hidden><img src="assets/save.svg" alt="">
+                    <p>Saved Jobs</p>
+                </a>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

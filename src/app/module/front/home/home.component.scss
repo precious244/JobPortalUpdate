@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+$abu : #F3F3F3;
+$abu2 : #F7F7F7;
+$abu3 : #cecece;
+$abu4 : #F0F0F0;
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+mat-icon {
+    border: hidden !important;
+    color: black;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+    background: white;
+    border: 2px solid $abu3;
+
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.button-search {
+    display: flex;
+    align-items: flex-start;
+
+    .btn {
+        border-radius: 0;
+        padding: 19px 0 19px 0;
+    }
+}
+
+
+
+
+@media (max-width: 1199.98px) {
+    .banner {
+        background-image: url(/assets/jumbotron-small.jpg);
+    }
+}
+
+@media (min-width: 1200px) {
+    .banner {
+        background-image: url(/assets/jumbotron.jpg);
+
+    }
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    margin-bottom: 0;
+
+    .height100p {
+        height: 100vh;
+    }
+
+    .h100 {
+        height: 100%;
+    }
+
+    .input-group-text {
+        background: white;
+        border: none !important;
+    }
+
+    .contentBox {
+        position: relative;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        text-align: left;
+        z-index: 10;
+
+        @media (min-width: 992px) {
+            .motto-jumbotron {
+                max-width: 550px;
+            }
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #fff;
+            font-size: 2.5rem;
+            align-items: center;
+            letter-spacing: 3px;
+        }
+
+        .btn-search {
+            background-color: #F5B50E;
+            color: white;
+            border-radius: 0;
+            padding: 13px;
+        }
+
+        .popular-tag {
+
+            p {
+                font-size: 13px;
+                padding-top: 5px;
+            }
+
+            .btn {
+                font-size: 13px;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            .tag-btn {
+                margin-left: -20px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .tag-btn .btn {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.job-oppur {
+
+    a {
+        text-decoration: none;
+    }
+
+    .section-title {
+
+        h3 {
+            font-weight: 800;
+        }
+
+    }
+
+    @media (max-width: 767.98px) {
+        .text-link {
+            font-size: 20px;
+        }
+    }
+
+    .section-body {
+        .card {
+            background-color: $biru_card;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+
+            .clock {
+                font-size: 15px;
+
+                img {
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+}
+
+.features {
+
+    a {
+        text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+        .features-assets {
+            padding-top: 100px;
+
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .features-asset {
+            padding-top: 20px;
+        }
+
+        .features-image {
+            margin-top: 50px;
+        }
+
+        .features-content {
+            margin-top: 50px;
+        }
+    }
+
+    h1 {
+        font-weight: 200;
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-weight: 200;
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    @media (min-width: 576px) {
+        .features-content {
+            margin-top: 20px;
+        }
+    }
+}
+
+.link-text {
+    margin-top: 100px;
+}
+
+@media (max-width: 767.98px) {
+    .link-text {
+        margin-top: 50px;
+    }
+}
+
+.jobseeker {
+    color: white;
+
+    @media (max-width: 767.98px) {
+        margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+        margin-top: 200px;
+    }
+
+    .jobseeker-bg {
+        background-color: $biru;
+        border-radius: 20px;
+
+        @media (max-width: 767.98px) {
+            .jobseeker-img img {
+                width: auto;
+                height: 250px;
+                border-radius: 100px;
+                position: abolute;
+                margin-top: -100px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+
+            .jobseeker-img img {
+                width: auto;
+                height: 450px;
+                border-radius: 100px;
+                position: abolute;
+                margin-top: -100px;
+                margin-left: 20px;
+            }
+
+        }
+
+        @media (min-width: 992px) {
+
+
+            .jobseeker-img img {
+                width: auto;
+                height: 550px;
+                border-radius: 100px;
+                position: abolute;
+                margin-top: -180px;
+                margin-left: 80px;
+            }
+
+        }
+
+        .jobseeker-content {
+            padding: 30px;
+
+
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-weight: 500;
+        }
+
+        .btn-biru {
+            background: white;
+            color: $biru;
+            font-weight: 600;
+        }
+
+        .btn-biru:hover {
+            background: $biru;
+            color: white;
+            border: 2px solid white;
+        }
+    }
+}
+
+.jobseeker-quote {
+    background-image: url(/assets/bannerquote.png);
+    background-size: cover;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .banner-quote {
+        padding: 120px;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .italic-quote {
+        font-style: italic;
+        font-weight: 100;
+    }
+
+    .btn-biru {
+        background: white;
+        color: $biru;
+        font-weight: 600;
+    }
+
+    .btn-biru:hover {
+        background: $biru;
+        color: white;
+        border: 2px solid white;
+    }
+
+    @media (max-width: 767.98px) {
+        h2 {
+            font-size: 18px;
+        }
+
+        .banner-quote {
+            padding: 40px;
+        }
+    }
+}
+
+.phone-content {
+    z-index: 100;
+
+
+
+    @media (max-width: 767.98px) {
+        img {
+            max-height: 280px;
+            max-width: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        img {
+            max-height: 350px;
+            margin-left: 70px;
+            margin-top: 340px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        img {
+            max-height: 550px;
+            margin-left: 70px;
+            margin-top: 100px;
+        }
+    }
+
+
+
+}
+
+.qr-content {
+    z-index: 100;
+
+    @media (max-width: 767.98px) {
+        img {
+            max-height: 280px;
+            max-width: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        img {
+            max-height: 2280px;
+            max-width: 210px;
+            margin-left: auto;
+            margin-top: 120px;
+            margin-right: 40px;
+        }
+    }
+}
+
+.footer {
+
+
+
+    @media (min-width: 992px) {
+
+
+        .svg-1 {
+
+            margin-top: -100px;
+            z-index: -1 !important;
+        }
+
+    }
+
+    @media (min-width: 1200px) {
+        .svg-1 {
+
+            margin-top: -130px;
+            z-index: -1 !important;
+        }
+    }
+
+    .footer-content {
+        background-color: $biru;
+    }
+}
+
+.footer-content {
+    color: white;
+
+    img {
+        padding: 50px 0 0 50px;
+        max-width: 200px;
+    }
+
+    p {
+        padding: 20px 0 0 50px;
+    }
+
+    @media (min-width: 768px) {
+        img {
+            padding: 50px 0 0 50px;
+            max-width: 300px;
+        }
+    }
+}

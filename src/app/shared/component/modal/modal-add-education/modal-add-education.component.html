@@ -1,0 +1,150 @@
+<div class="modal-dialog">
+    <div class="modal-content border-0">
+        <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Add Education Background</h5>
+            <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <form class="form-group" [formGroup]="educationModel.formGroupAddEducation">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="">
+                            <label for="exampleInputEmail1" class="form-label">School/University</label>
+                            <mat-form-field class="example-full-width" appearance="outline" floatLabel="never">
+                                <mat-label>Choose your School/University</mat-label>
+                                <input matInput type="text" [matAutocomplete]="auto" formControlName="schoolUniversity">
+                                <mat-autocomplete #auto>
+                                    <mat-option *ngFor="let item of educationModel.allUniversity"
+                                        [value]="item.universityName">
+                                        {{item.universityName}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <label for="select" class="form-label">Degree</label>
+                            <mat-form-field class="example-full-width" appearance="outline" floatLabel="never">
+                                <mat-label>Choose your Degree</mat-label>
+                                <input matInput type="text" [matAutocomplete]="autob" formControlName="degreeName">
+                                <mat-autocomplete #autob>
+                                    <mat-option *ngFor="let item of educationModel.allDegree" [value]="item.degreeName">
+                                        {{item.degreeName}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="">
+                            <label for="select" class="form-label">Major</label>
+                            <mat-form-field class="example-full-width" appearance="outline" floatLabel="never">
+                                <mat-label>Choose your Major</mat-label>
+                                <input matInput type="text" [matAutocomplete]="autoc" formControlName="majorName">
+                                <mat-autocomplete #autoc>
+                                    <mat-option *ngFor="let item of educationModel.allMajor" [value]="item.majorName">
+                                        {{item.majorName}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <label for="select" class="form-label">Graduation Year</label>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="select" class="form-label">Start date</label>
+                        <select formControlName="startPeriodMonth" id="Select" class="form-select">
+                            <option value="" disabled selected hidden>Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="select" class="form-label" style="visibility: hidden;">Start date</label>
+                        <select id="year-picker" class="form-select" formControlName="startPeriodYear">
+                            <option value="" disabled selected hidden>Year</option>
+                            <option *ngFor="let year of startPeriodYearOptions" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="select" class="form-label">End date/Expected</label>
+                        <select formControlName="endPeriodMonth" id="Select" class="form-select">
+                            <option value="" disabled selected hidden>Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="select" class="form-label" style="visibility: hidden;">Start date</label>
+                        <select id="year-picker" class="form-select" formControlName="endPeriodYear">
+                            <option value="" disabled selected hidden>Year</option>
+                            <option *ngFor="let year of endPeriodYearOptions" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="select" class="form-label">Grade Point Average (GPA) <span class="text-secondary">(Optional)</span></label>
+                            <input type="number" class="form-control" id="gpaInput" step=".01" min="0" max="4"
+                                formControlName="gradePoint" placeholder="0.00" maxlength="2">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="select" class="form-label" style="visibility: hidden;">select menu</label>
+                            <input type="number" class="form-control" id="gpaInput" step=".01" min="0" max="4"
+                                formControlName="gradePointMax" placeholder="4.00" maxlength="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="form-label">Achievements, Activities/Societies, or Descriptions
+                            <i class="text-secondary">(Optional)</i></label>
+                        <textarea placeholder="I joined the student associaton, volunteer in social movement or etc." cols="92" rows="15" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="educationDescription"></textarea>
+                        <div>
+                            {{numberOfCharacters1}} / {{maxNumberOfCharacters}}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer border-0">
+
+            <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
+                Cancel
+            </button>
+            <button (click)="addEducation()" class="btn btn-primary rounded-pill px-5">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>

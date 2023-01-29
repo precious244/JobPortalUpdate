@@ -1,0 +1,40 @@
+<div class="container pt-5" *ngIf="!isUploaded">
+    <div class="row row-centered">
+        <div class="item">
+            <div class="content">
+                <h6 class="text-center hw">Apply to this job ?</h6>
+                <img class="image-doc" src="assets/pdf.png" alt="image">
+            </div>
+            <div class="col-md-6 col-centered">
+                <p class="text-center hw1">
+                    Your CV and Profile will be submitted for the
+                    <a href="">{{ applyModel.applyModelForm.controls['jobName'].value }}</a>
+                    at <a href="">{{ applyModel.applyModelForm.controls['recruiterCompany'].value }} </a>
+                </p>
+            </div>
+            <div class="input-group-append">
+                <button class="btn bg-primary rounded-pill px-5 py-2 font-style-btn btn-user btn-block" type="button"
+                    (click)="openUploadCv()" *ngIf="!isApplied">Upload CV</button>
+                <button class="btn bg-primary rounded-pill px-5 py-2 font-style-btn btn-user btn-block" type="button"
+                    (click)="putUpload()" *ngIf="isApplied">Submit Application</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-5" *ngIf="isUploaded">
+    <div class="row row-centered">
+        <div class="item">
+            <div class="content">
+                <h6 class="text-center hw">Your application is sent!</h6>
+                <img class="image-doc" src="assets/emailsent.png" alt="image">
+            </div>
+            <div class="col-md-6 col-centered">
+                <p class="text-center hw1">Your application for <a href="">{{
+                        applyModel.applyModelForm.controls['jobName'].value }}</a> at <a href="">{{
+                        applyModel.applyModelForm.controls['recruiterCompany'].value }} </a> has
+                    been submitted.
+                    We’ll notify you about the outcome of your application within 2 weeks.</p>
+            </div>
+        </div>
+    </div>
+</div>

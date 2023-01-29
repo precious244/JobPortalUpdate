@@ -1,0 +1,226 @@
+<section id="jumbotron">
+    <div class="jumbotron jumbotron-fluid height100p banner" id="home" loading="lazy">
+        <div class="container h100">
+            <div class="contentBox h100">
+                <div class="row ">
+                    <img src="assets/motto.png" alt="Responsive image" class="mb-3 img-fluid motto-jumbotron">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <section class="button-search">
+                                <ng-container>
+                                    <mat-form-field appearance="fill" class="col-md-10 col-lg-10">
+                                        <mat-label>Search for a job</mat-label>
+                                        <span matPrefix>
+                                            <mat-icon class="me-2">search</mat-icon> &nbsp;
+                                        </span>
+                                        <input matInput type="text" [(ngModel)]="fill" (keyup.enter)="keJobList()"
+                                            *ngIf="!authService.isLogin()">
+                                        <input matInput type="text" [(ngModel)]="fill" (keyup.enter)="keJobSearch()"
+                                            *ngIf="authService.isLogin()">
+                                    </mat-form-field>
+                                </ng-container>
+
+                                <button mat-flat-button color="primary" class="btn bg-warning text-white px-3"
+                                    (click)="keJobList()" *ngIf="!authService.isLogin()">Search</button>
+                                <button mat-flat-button color="primary" class="btn bg-warning text-white px-3"
+                                    (click)="keJobSearch()" *ngIf="authService.isLogin()">Search</button>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row mt-3 popular-tag " hidden>
+                        <div class="col-sm-1 col-md-2 col-lg-2 col-12 col-xl-1 ">
+                            <p class="text-white">Popular :</p>
+                        </div>
+                        <div class="col-sm-11 col-md-10 col-12 col-lg-10 col-xl-11 justify-content-md-left tag-btn ">
+                            <button type="button"
+                                class="btn btn-tag btn-outline-light btn-sm rounded-pill px-4 me-2">Android
+                                Developer</button>
+                            <button type="button"
+                                class="btn btn-tag btn-outline-light btn-sm rounded-pill px-4 me-2">Web
+                                Developer</button>
+                            <button type="button"
+                                class="btn btn-tag btn-outline-light btn-sm rounded-pill px-4 me-2">UI/UX
+                                Designer</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="job-oppur" class="job-oppur pt-5">
+    <div class="container">
+        <div class="section-title">
+            <h3>Find the Top Professional Job that Suits You</h3>
+        </div>
+        <div class="section-body ">
+            <div class="row">
+                <div class="col-md-4 pt-5" *ngFor="let job of homeModel.recentJobs.slice(0, 3)">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="me-auto"><img src="assets/ideaco.png" alt="" width="80px" height="80px">
+                                </div>
+                                <div class="clock d-flex"><img src="assets/clock.svg" alt="" width="18px" height="18px">
+                                    <p class="text-secondary ps-2">{{ job.createdAt }}</p>
+                                </div>
+                            </div>
+                            <h6>{{ job.jobName }}</h6>
+                            <a href="">{{ job.recruiterCompany }}</a>
+                            <p class="text-secondary">{{ job.jobAddress }}</p>
+                            <p>Rp{{ job.jobSalary }} </p>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-primary rounded-pill" type="button" (click)="submitLogin()">Apply
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-5">
+                <h3 class="d-flex justify-content-center text-link">
+                    <a href="" routerLink="jobs/list" *ngIf="!authService.isLogin()">
+                        Explore more
+                        job opportunities<img src="assets/bigger.svg" alt="" height="20px" class="ps-3">
+                    </a>
+                    <a href="" routerLink="main/job-find" *ngIf="authService.isLogin()">
+                        Explore more
+                        job opportunities<img src="assets/bigger.svg" alt="" height="20px" class="ps-3">
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="features" class="features pt-5 pb-5">
+    <div class="container">
+        <div class="section-title">
+            <h1 class="d-flex justify-content-center fw-bold">We’ll Help Get You Find A Job</h1>
+        </div>
+        <div class="section-body">
+            <div class="row features-assets">
+                <div class="col-md-6 d-flex justify-content-center features-image">
+                    <img src="assets/jobrec.png" alt="" width="250px" height="245px">
+                </div>
+                <div class="col-md-6 justify-content-center align-self-center features-content ">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <h2 class="fw-bolder">Job Recommendation</h2>
+                            <p>Make sure you complete your profile, so we can match you with the suitable job</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row features-assets">
+                <div class="col-md-6 d-flex justify-content-center order-2 features-image">
+                    <img src="assets/jobrec2.png" alt="" width="350px" height="235px">
+                </div>
+                <div class="col-md-6 justify-content-center align-self-center order-1 features-content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <h2 class="fw-bolder">Easy Apply</h2>
+                            <p>We make your job application process easily, just click apply and “woooosh” the HR
+                                Team will review your job application</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row features-assets">
+                <div class="col-md-6 d-flex justify-content-center features-image">
+                    <img src="assets/jobrec3.png" alt="" width="300px" height="285px">
+                </div>
+                <div class="col-md-6 justify-content-center align-self-center features-content">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <h2 class="fw-bolder">Track Your Job Application</h2>
+                            <p>Our tracking tool won’t give you a false hope. Track your job application right on
+                                Toptalent Website!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row link-text">
+                <h1 class="d-flex justify-content-center fw-bold">
+                    <a href="" routerLink="/login" *ngIf="!authService.isLogin()">
+                        Explore All Features<img src="assets/bigger.svg" alt="" height="20px" class="ps-3">
+                    </a>
+                    <a href="" routerLink="main/job-find" *ngIf="authService.isLogin()">
+                        Explore All Features<img src="assets/bigger.svg" alt="" height="20px" class="ps-3">
+                    </a>
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="jobseeker" class="jobseeker pt-5 mb-5">
+    <div class="container">
+        <div class="row jobseeker-bg d-flex justify-content-center align-self-center">
+            <div class="col-md-6 jobseeker-img">
+                <img src="assets/jobseeker.png" alt="">
+            </div>
+            <div class="col-md-6 jobseeker-content py-5 justify-content-center align-self-center">
+                <h1 class="my-1 ">Are you an employer?</h1>
+                <h2 class="my-3">Find the Toptalent to get your company’s business growing</h2>
+                <a href="https://toptalentapp.com/login">
+                    <button type="button" class="btn btn-biru rounded-pill px-5 mt-1">
+                        Find
+                        Talent
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="jobseeker-quote" id="jobseeker-quote">
+    <div class="container">
+        <div class="row">
+            <div class="banner-quote justify-content-center align-self-center">
+                <h2 class="italic-quote ">“Opportunities don't happen, you create them”</h2>
+                <h2>Find the career opportunity with Toptalent</h2>
+                <button type="button" class="btn btn-biru rounded-pill px-5 mt-4" routerLink="/login"
+                    *ngIf="!authService.isLogin()">Get
+                    Hired Now</button>
+                <button type="button" class="btn btn-biru rounded-pill px-5 mt-4" routerLink="main/job-find"
+                    *ngIf="authService.isLogin()">Get
+                    Hired Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="qr-section" id="qr-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 phone-content ">
+                <img src="assets/phone.png" alt="">
+            </div>
+            <div class="col-md-7 qr-content ">
+                <div class="row">
+                    <div class="px-3 py-3">
+
+                        <h2 class="fw-bolder">Your job-searching partner is always on your side </h2>
+                        <h2>We are available on Mobile version. Grab your phone, download Toptalent App and get
+                            hired!
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <img src="assets/qr.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer" class="footer">
+    <svg class="svg-1" viewBox="0 0 1920 231" fill="none">
+        <path
+            d="M0 231C0 231 201.039 139.477 723.441 129.775C1245.84 120.073 1432.36 74.5933 1474.5 62.965C1516.64 51.3366 1669.26 1.15606 1920 0V231H0Z"
+            fill="#006EFF" />
+    </svg>
+    <div class="footer-content px-5 py-5">
+        <img src="assets/toptalent.png" alt="">
+        <p>©2022 Toptalent. All Rights Reserved</p>
+    </div>
+</footer>

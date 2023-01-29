@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contentBox {
+  background-size: cover;
+  border-radius: 32px;
+  position: relative;
+  margin-top: 20px;
+
+  img {
+    height: 500px;
+  }
+
+  @media (max-width: 767.98px) {
+    img {
+      height: 400px;
+      width: 400px;
+      padding: 20px 0 20px 0;
+    }
+  }
+
+  @media (min-width: 500px) {
+    .text-right {
+      font-size: 12px;
+      margin-left: 260px;
+    }
+  }
+
+}
+
+.h4 {
+  font-weight: 900px;
+  padding-left: 11px;
+}
+
+.h5 {
+  color: #FFFFFF;
+  position: relative;
+  font-weight: 900;
+}
+
+.text-secondary {
+  position: relative;
+  padding-left: 12px;
+  font-size: 13px;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.text-position {
+  position: relative;
+  bottom: 20px;
+}
+
+.text-position-response {
+  position: relative;
+  bottom: 50px;
+}
+
+.text-position-response2 {
+  position: relative;
+  bottom: 80px;
+}
+
+.text-three {
+  position: relative;
+  left: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text-four {
+  position: relative;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  bottom: 18px;
+}
+
+.text-font {
+  display: relative;
+  color: #95979D;
+  padding-left: 12px;
+  font-size: 12px;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+@media (min-width: 500px) {
+  .text-secondary {
+    font-size: 13px;
+  }
+}
+
+.text-gray {
+  position: relative;
+  border-radius: 36px;
+  width: 79px;
+  height: 20px;
+  left: 1162px;
+  top: 253px;
+  font-size: 16px;
+}
+
+.text-weight {
+  font-weight: 900;
+}
+
+.text-gray-900 {
+  color: #333333 !important;
+}
+
+.icon {
+  width: 17px;
+}
+
+.form-group {
+  border-radius: 8px;
+  margin: 12px;
+}
+
+.form-control {
+  display: relative;
+  background-color: #EFF0F2;
+  border-color: #EFF0F2;
+  margin-right: 140px;
+}
+
+.form-control-user {
+  font-size: 0.8rem;
+  border-radius: 8px;
+  height: 40px;
+  width: 480px;
+}
+
+.text3 {
+  color: #95979D;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.small {
+  font-weight: 500;
+}
+
+.text-last1 {
+  display: relative;
+  left: 280px;
+  bottom: 68px;
+}
+
+.text4 {
+  position: relative;
+  color: #006EFF;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.font-style-btn {
+  font-size: 15px;
+  background-color: #ECF3FF;
+  text-align: center;
+  border-radius: 36px;
+  width: 480px;
+  margin-left: 12px;
+}
+
+.custom-control-label {
+  font-style: normal;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #006EFF;
+  border-color: #006EFF;
+}
+
+.btn-user {
+  background: #006EFF;
+  margin-top: 20px;
+  margin-right: 140px;
+  margin-left: 15px;
+}
+
+.btn-block {
+  border-radius: 36px;
+  height: 10px;
+  width: 400px;
+}
+
+.btn-text {
+  text-align: center;
+}
+
+.margin-last {
+  margin-bottom: 12px;
+}
+
+.icon-eye {
+  position: relative;
+  left: 430px;
+  bottom: 50px;
+  cursor: pointer;
+}
+
+.icon-eye2 {
+  position: relative;
+  left: 430px;
+  bottom: 80px;
+  cursor: pointer;
+}
+
+.icon {
+  position: relative;
+  left: 440px;
+  bottom: 30px;
+  width: 40px;
+}

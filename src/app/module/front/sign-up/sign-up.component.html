@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="contentBox col-md-6">
+            <img src="assets/signup.png" class="card-img-top" alt="image">
+        </div>
+        <div class="col-md-6 mt-4">
+            <div>
+                <h4 class="h4 text-gray-900 mb-4 text-position0 text-weight">Sign Up</h4>
+            </div>
+            <form class="form-group was-validated" [formGroup]="registerModel.formGroupRegister" (ngSubmit)="onRegister()">
+                <p class="text-secondary text-gray-900">First Name</p>
+                <div class="form-group">
+                    <input formControlName="jobseekerFirstName" type="text" id="validationFirstName"
+                        class="form-control form-control-user" value="Mark" placeholder="John" required>
+                    <div class="text-three" *ngIf="!registerModel.formGroupRegister.controls['jobseekerFirstName'].valid">
+                        <span style="color: #EB5757;">A field is required</span>
+                    </div>
+                </div>
+                <p class="text-secondary text-gray-900">Last Name</p>
+                <div class="form-group">
+                    <input formControlName="jobseekerLastName" type="text" class="form-control form-control-user"
+                        value="Mark" placeholder="Doe" required>
+                    <div class="text-three"
+                        *ngIf="!registerModel.formGroupRegister.controls['jobseekerLastName'].valid">
+                        <span style="color: #EB5757;">A field is required</span>
+                    </div>
+                </div>
+                <p class="text-secondary text-gray-900">Personal Email</p>
+                <div class="form-group">
+                    <input formControlName="jobseekerEmail" type="email"
+                        *ngIf="registerModel.formGroupRegister.controls['jobseekerEmail']"
+                        placeholder="yourpersonal@mail.com" class="form-control form-control-user" value="Mark"
+                        id="exampleInputEmail" aria-describedby="emailHelp" required>&nbsp;
+                    <div class="text-four" *ngIf="!registerModel.formGroupRegister.controls['jobseekerEmail'].valid">
+                        <span style="color: #EB5757;">A valid email is required</span>
+                    </div>
+                </div>
+                <p class="text-secondary text-gray-900 text-position">Password</p>
+                <div class="form-group">
+                    <input [type]="hide ? 'password' : 'text'" formControlName="jobseekerPassword"
+                        class="form-control form-control-user text-position" value="Mark" id="exampleInputPassword"
+                        placeholder="Create password (Min. 8 Characters)" minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9_]).{8,}" required="">
+                    <mat-icon class="icon-eye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                    <div class="text-three text-position-response"
+                        *ngIf="!registerModel.formGroupRegister.controls['jobseekerPassword'].valid">
+                        <span style="color: #EB5757;">
+                            Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
+                            more characters
+                        </span>
+                    </div>
+                </div>
+                <p class="text-secondary text-gray-900 text-position-response">Re-enter Password</p>
+                <div class="form-group">
+                    <input [type]="hide2 ? 'password' : 'text'" formControlName="jobseekerConfirmPassword"
+                        class="form-control form-control-user text-position-response" id="exampleInput2Password"
+                        placeholder="Confirm password" value="Mark" minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9_]).{8,}" required="">
+                    <mat-icon class="icon-eye2" matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                    <div class="text-three text-position-response2" *ngIf="registerModel.passwordMatchError()"
+                        role="alert">
+                        <span style="color: #EB5757;"> Password does not match</span>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 text-position-response2">
+                    <button (click)="toggleLoading()" class="font-style-btn btn btn-primary btn-user">
+                        <img *ngIf="isLoading" style="width : 24px" src="assets/loading.gif" />
+                        Register
+                    </button>
+                </div>
+            </form>
+            <div class="text-center text-position-response2">
+                <a (click)="sendingEmail()" class="small text4" type="button"> I have not received a verification
+                    email</a>
+            </div>
+            <div class="text-center text-font text-position-response2"> Already have an account?
+                <a class="small text4 margin-last" (click)="onLogin()" type="button"> Log in</a>
+            </div>
+        </div>
+    </div>
+</div>

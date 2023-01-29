@@ -1,0 +1,76 @@
+<div class="modal-dialog">
+    <div class="modal-content border-0">
+        <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Salary</h5>
+            <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <form class="form-group" [formGroup]="salaryModel.formGroupEditSalary">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="IDR" class="form-label">Current Monthly Salary</label>
+                            <select formControlName="currentCurrency" id="Select" class="form-select"
+                                [(ngModel)]="profile.jobseekerSalary.currentCurrency">
+                                <option value="{{item.currencySymbol}}" *ngFor="let item of salaryModel.allCurrency">
+                                    {{item.currencyCode}} - <span [innerHtml]="item.currencySymbol"></span>
+                                </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="currentSalary" class="form-label"></label>
+                            <input formControlName="currentSalary" type="number" class="form-control text-position1"
+                                id="currentSalary" [(ngModel)]="profile.jobseekerSalary.currentSalary">
+                            <p class="text-position">(nett) per month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="select" class="form-label">Expected Monthly Salary</label>
+                            <select formControlName="expectedCurrency" id="Select" class="form-select"
+                                [(ngModel)]="profile.jobseekerSalary.expectedCurrency">
+                                <option value="{{item.currencySymbol}}" *ngFor="let item of salaryModel.allCurrency">
+                                    {{item.currencyCode}} - <span [innerHtml]="item.currencySymbol"></span>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="expectedMinimum" class="form-label"></label>
+                            <input formControlName="expectedMinimum" type="number" class="form-control text-position1"
+                                id="expectedMinimum" [(ngModel)]="profile.jobseekerSalary.expectedMinimum">
+                            <p class="text-position">
+                                to
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="expectedMaximum" class="form-label"></label>
+                            <input formControlName="expectedMaximum" type="number" class="form-control text-position3"
+                                id="exampleInputSalary" [(ngModel)]="profile.jobseekerSalary.expectedMaximum">
+                            <p class="text-position4">
+                                (nett) per month
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer border-0">
+            <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
+                Cancel
+            </button>
+            <button (click)="editSalary()" class="btn btn-primary rounded-pill px-5">
+                Save
+            </button>
+        </div>
+    </div>
+</div>

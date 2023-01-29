@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row row-centered">
+        <div class="item">
+            <div class="content">
+                <img class="image-doc" src="assets/image/verifEmail.png" alt="image">
+            </div>
+            <div class="row-centered">
+                <form class="form-group col-centered" [formGroup]="verifModel.formGroupRegister"
+                    (ngSubmit)="sendingEmailAgain()">
+                    <h5> Input e-mail </h5>
+                    <p class="small text-weight2 ">
+                        We will send the e-mail verification to your e-mail
+                    </p>
+                    <div class="form-size">
+                        <div class="form-group">
+                            <input formControlName="jobseekerEmail" type="email" class="form-control form-control-user"
+                                id="exampleInputEmail" aria-describedby="emailHelp" placeholder="yourpersonal@mail.com"
+                                required>&nbsp;
+                            <div class="text-four"
+                                *ngIf="!verifModel.formGroupRegister.controls['jobseekerEmail'].valid">
+                                <span style="color: #EB5757;">A valid email is required</span>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 button">
+                            <button (click)="toggleLoading()" class="font-style-btn btn btn-primary btn-user">
+                                <img *ngIf="isLoading" style="width : 24px" src="assets/loading.gif" />
+                                Send e-mail verification
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

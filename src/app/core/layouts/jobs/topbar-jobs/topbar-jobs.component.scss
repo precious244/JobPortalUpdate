@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    .navbar-custom {
+        background-color: white;
+        z-index: 1000;
+        position: sticky;
+
+        .navbar-brand {
+            // position: sticky;
+            z-index: 10;
+
+            img {
+                margin-bottom: 8px;
+
+            }
+        }
+
+
+        .nav-link {
+            color: black;
+        }
+
+        .active {
+            color: $biru;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            color: $biru;
+            border: 1px solid $biru;
+        }
+
+
+
+
+
+        @media (min-width: 992px) {
+
+            .navbar-nav {
+                margin-left: 5%;
+            }
+
+            .nav-item {
+                font-size: 15px;
+                font-weight: 700;
+
+
+                .btn {
+                    font-size: 15px;
+                    font-weight: 700;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                margin-top: 10px;
+            }
+
+            .nav-item {
+
+                .btn {
+                    margin-bottom: 10px;
+                    margin-left: -10px;
+                }
+            }
+        }
+    }
+}

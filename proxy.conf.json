@@ -1,0 +1,11 @@
+{
+  "/dev": {
+    "target": "http://localhost:3040/",
+    "secure": false,
+    "pathRewrite": {
+      "^/dev": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

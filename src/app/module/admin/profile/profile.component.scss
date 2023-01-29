@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+$abu : #F3F3F3;
+$abu2 : #F7F7F7;
+$abu3 : #cecece;
+$abu4 : #F0F0F0;
+$abu5 : #D9D9D9;
+$abu6 : #95979D;
+$hijau : #149E48;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+
+    .col-sm-2,
+    .col-sm-3 {
+        -moz-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        hyphens: auto !important;
+        word-wrap: break-word !important;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    * {
+        font-size: 12px;
+    }
+
+    button {
+        padding: 5px !important;
+        font-size: 12px;
+    }
+
+    button.img {
+        width: 3px;
+        height: 3px;
+    }
+
+    .jobseeker-name {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .user-job-detail {
+        padding-left: 15px;
+    }
+
+    .gambar-default {
+        margin-bottom: 15px;
+        padding-left: 0 !important;
+    }
+
+    .array-data {
+        padding-left: 0 !important;
+    }
+}
+
+.contain {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.section-white {
+    background-color: white;
+    border-radius: 15px;
+    padding: 35px 30px;
+    margin-bottom: 20px;
+    border: 1px solid $abu3;
+    font-size: 14px;
+
+    h4 {
+        font-weight: 600;
+    }
+}
+
+.profile-completion {
+    padding: 20px 30px 20px 30px;
+
+
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: red;
+    }
+
+    ::ng-deep .mat-progress-bar {
+        border-radius: 5px;
+        height: 5px;
+    }
+
+    p {
+        margin: 3px;
+
+    }
+
+    .check-green {
+        color: $hijau;
+    }
+
+    .list-completion {
+        color: $abu6;
+
+        .active {
+            color: black;
+        }
+    }
+}
+
+.personal-information {
+    text-align: left;
+
+    li {
+        list-style: none;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 5px 0 5px 0;
+    }
+
+
+
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    @media (min-width: 768px) {
+
+        .profile-detail {
+            padding-left: 40px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+
+        .info-img {
+            margin-top: 30px;
+        }
+    }
+
+    .info-name {
+
+        .statusHijau {
+
+            color: $hijau;
+        }
+
+        .statusMerah {
+
+            color: red;
+        }
+
+        .statusKuning {
+
+            color: $abu6;
+        }
+
+        .mat-icon {
+            font-size: 18px;
+        }
+
+        p {
+            margin-top: -1px;
+        }
+    }
+
+    .info-img {
+        img {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        a {
+
+            text-decoration: none;
+        }
+
+        .col-sm-2 {
+            -moz-hyphens: auto !important;
+            -ms-hyphens: auto !important;
+            -webkit-hyphens: auto !important;
+            hyphens: auto !important;
+            word-wrap: break-word !important;
+        }
+    }
+}
+
+.top-skills {
+
+    .btn-exp {
+
+        button {
+
+            margin-right: 15px;
+            margin-top: 10px;
+            padding: 5px 20px 5px 20px;
+        }
+    }
+
+}
+
+.working-experiences,
+.education,
+.salary {
+
+    .badge {
+        background-color: $abu4;
+    }
+
+    button {
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        button {
+            span {
+                display: none;
+            }
+        }
+
+    }
+
+    h6 {
+        font-weight: 600;
+    }
+
+    .user-job-detail {
+        margin-top: 10px;
+    }
+
+    p {
+        margin: 5px 0 5px 0;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+    // @media (min-width: 1200px) {
+    //     .col-md-11 {
+    //         margin-left: -1rem;
+    //     }
+    // }
+
+    ol {
+        margin-left: 1rem;
+        padding: 0;
+    }
+
+}

@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+<div class="modal-dialog">
+    <div class="modal-content border-0">
+        <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Personal Information</h5>
+            <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <form class="form-group" [formGroup]="modalPersonalModel.profileModelForm" >
+                <div class="row mb-3">
+                    <div class=" col-sm-12 col-5 px-0 profile-img">
+                        <!-- <img src="{{file}}"> -->
+                        <img  src="{{profile.jobseekerImage || 'assets/imgnotavailable.jpg'}}">
+                        <!-- <img *ngIf="!isUpload" src="{{'assets/imgnotavailable.jpg'}}"> -->
+                        <button class="btn btn-outline-primary rounded-pill px-3 py-1 ms-3 me-1 fw-bold file-upload-button">
+                            Change Photo <input type="file" #fileInput (change)="uploadPhoto($event)"/>
+                        </button>
+                        <button (click)="resetPhoto()" class="btn btn-outline-primary rounded-pill px-3 py-1 ms-1 fw-bold">
+                            Remove Photo
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Name</label>
+                            <input formControlName="jobseekerFirstName" type="text" class="form-control" placeholder="First name"
+                                [(ngModel)]="profile.jobseekerFirstName">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" style="visibility: hidden;">Name</label>
+                            <input formControlName="jobseekerLastName" type="text" class="form-control" placeholder="Last name"
+                            [(ngModel)]="profile.jobseekerLastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Profession</label>
+                            <input formControlName="jobseekerProfession" type="text" class="form-control" placeholder=""
+                                [(ngModel)]="profile.jobseekerProfession">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="disabledTextInput" class="form-label">E-mail Address</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="{{ profile.jobseekerEmail }}">
+                                <label for="disabledTextInput" class="form-label mb-0 mt-1"><a href="">Change
+                                        Email</a></label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label>Select Country</label>
+                                <select formControlName="countryId" class="form-control" (change)="onChangeCountry($any($event.target).value)">
+                                <option *ngFor="let item of modalPersonalModel.allCountry" value="{{item.countryId}}">{{item.countryName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label>Select City</label>
+                                <select formControlName="cityId" class="form-control">
+                                    <option *ngFor="let item of modalPersonalModel.allCity" value="{{item.cityId}}">{{item.cityName}}</option>
+                                </select> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="select" class="form-label label-phone">Phone Number</label>
+                            <mat-form-field>
+                                <ngx-mat-intl-tel-input 
+                                [(ngModel)]="profile.jobseekerPhone" 
+                                class="form-control form-phoneNumber"
+                                [enableSearch]="true"
+                                name="jobseekerPhone" 
+                                formControlName="jobseekerPhone" 
+                                [preferredCountries]="['ina', 'gb']" 
+                                [enablePlaceholder]="true" #phone>
+                                </ngx-mat-intl-tel-input>
+                            </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="select" class="form-label">Job Seeking Status</label>
+                        <div class="input-group mb-3">
+                            <select [(ngModel)]="profile.jobseekingStatus" formControlName="jobseekingStatus" class="form-select" id="inputGroupSelect01">
+                                <option value="1">I’m Actively Applying</option>
+                                <option value="2">Flexible, I’m just looking around</option>
+                                <option value="3">I’m not looking for jobs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="select" class="form-label">Portfolio <i class="text-secondary">(optional)</i></label>
+                        <div class="input-group mb-3" >
+                            <select class="selectpicker"> 
+                                <option>Github</option>
+                                <option>Behance</option>
+                                <option>Dribbble</option>
+                                <option>Android App</option>
+                                <option>iOS App</option>
+                                <option>Website</option>
+                            </select>
+                            <input [(ngModel)]="profile.jobseekerPortfolio" formControlName="jobseekerPortfolio" type="text" class="form-control" aria-label="Text input with dropdown button">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="select" class="form-label">Socials <i class="text-secondary">(optional)</i></label>
+                        <div class="input-group mb-3">
+                            <img src="assets/image/twitter.png" alt="" class="me-2 fb">
+                            <input [(ngModel)]="profile.jobseekerTwitter" formControlName="jobseekerTwitter" type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <img src="assets/image/fb.png" alt="" class="me-2 fb">
+                            <input [(ngModel)]="profile.jobseekerFacebook" formControlName="jobseekerFacebook" type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <img src="assets/image/ig.png" alt="" class="me-2 fb">
+                            <input [(ngModel)]="profile.jobseekerInstagram" formControlName="jobseekerInstagram" type="text" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <img src="assets/image/linkedin.png" alt="" class="me-2 fb">
+                            <input [(ngModel)]="profile.jobseekerLinkedin" formControlName="jobseekerLinkedin" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer border-0">
+            <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
+                Cancel
+            </button>
+            <button (click)="updateDataProfile()" class="btn btn-primary rounded-pill px-5">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>

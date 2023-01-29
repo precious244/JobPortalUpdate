@@ -1,0 +1,54 @@
+.modal-header {
+    padding-top: 0;
+    margin: 0 15px 0 15px;
+
+    h5 {
+        font-weight: 650;
+    }
+}
+
+.modal-body {
+    margin: 0 15px 0 15px;
+    padding-bottom: 30px;
+    text-align: left !important;
+    font-size: 13px;
+}
+
+.form-control {
+    width: 200px;
+}
+
+.text-position {
+    position: relative;
+    bottom: 30px;
+    right: 10px;
+}
+
+.text-position1 {
+    position: relative;
+    margin-top: 8px;
+    right: 220px;
+}
+
+.text-position3 {
+    position: relative;
+    left: 390px;
+    bottom: 93px;
+}
+
+.text-position4 {
+    position: relative;
+    bottom: 123px;
+    left: 600px;
+}
+
+.form-select {
+    width: 150px;
+}
+
+.modal-footer {
+    position: relative;
+    bottom: 90px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

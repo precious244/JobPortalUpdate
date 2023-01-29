@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row row-centered">
+        <div class="item">
+            <div class="content">
+                <img class="image-doc" src="assets/verifEmail.png" alt="image">
+            </div>
+            <div class="row-centered">
+                <p class="text-center text-weight py-5">
+                    Check your e-mail for verification.
+                </p>
+                <p class="text-center text-weight2 hw1">
+                    E-mail verification has been sent to
+                    {{ registerModel.formGroupRegister.controls['jobseekerEmail'] }}
+                </p>
+                <div class="text-center text-weight2 hw1">
+                    <a (click)="sendingEmail()" class="small text4" type="button"> I have not received a verification
+                        email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

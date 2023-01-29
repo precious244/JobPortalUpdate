@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="contentBox col-md-6">
+            <img src="assets/fix.png" class="card-img-top" alt="image">
+        </div>
+        <div class="col-md-6 mt-4">
+            <div>
+                <h4 class="h4 text-gray-900 mb-4 hw text-weight">Login</h4>
+            </div>
+            <form class="form-group was-validated" [formGroup]="loginModel.formGroupLogin" (ngSubmit)="onLogin()">
+                <div *ngIf="loginModel.isInvalidLogin()"
+                    class="mt-2 text-sm text-secondary text-red-600 dark:text-red-500" role="alert">
+                    <p style="color: red;">
+                        {{ loginModel.responseLogin.message }}
+                    </p>
+                </div>
+                <p class="text-secondary text-gray-900 mb-4">Email</p>
+                <div class="form-group">
+                    <input formControlName="jobseekerEmail" 
+                    type="email" class="form-control form-control-user"
+                        id="exampleInputEmail" aria-describedby="emailHelp" placeholder="youremail@mail.com" required>
+                    <mat-icon class="icon-email"> email</mat-icon>
+                    <!-- <div class="text-secondary text-s"
+                        *ngIf="!loginModel.formGroupLogin.controls['jobseekerEmail'].valid">
+                        <span style="color: red;">A valid email is required</span>
+                    </div> -->
+                    <div *ngIf="f['jobseekerEmail'] && (f['jobseekerEmail'].touched || f['jobseekerEmail'].dirty)">
+                        <div *ngIf="f['jobseekerEmail'].errors">
+                            <p *ngIf="f['jobseekerEmail'].errors['required']" class="text-secondary text-s">
+                                <span style="color: red;">Oops!</span> Email is required
+                            </p>
+                            <p *ngIf="f['jobseekerEmail'].errors['jobseekerEmail']" class="text-secondary text-s">
+                                <span style="color: red;">Oops!</span> Format email wrong
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-secondary text-gray-900 mb-4 position">Password</p>
+                <div class="form-group">
+                    <input [type]="hide ? 'password' : 'text'" formControlName="jobseekerPassword"
+                        class="form-control form-control-user position" id="exampleInputPassword"
+                        placeholder="Enter your password" minlength="8" required="">
+                    <mat-icon class="icon-eye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                </div>
+                <div class="form-group-2">
+                    <div class="custom-control custom-checkbox small d-flex">
+                        <div class="form-check me-auto">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Remember Me
+                            </label>
+                        </div>
+                        <a class="position2" (click)="submitForgot()" style="color:#006EFF;" type="button">
+                            Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button (click)="toggleLoading()" class="font-style-btn btn btn-primary btn-user">
+                        <img *ngIf="isLoading" style="width : 24px" src="assets/loading.gif" />
+                        Login
+                    </button>
+                </div>
+            </form>
+            <div class="text-center text3 text-position"> Don’t have any account?
+                <a (click)="signUp()" class="small" type="button"> Sign Up For Free!</a>
+            </div>
+        </div>
+    </div>
+</div>

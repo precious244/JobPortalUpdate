@@ -1,0 +1,221 @@
+<section class="find-jobs">
+    <div class="contain container-fluid">
+        <div class="section-white">
+            <div class="section-search-grey">
+                <div class="row">
+                    <div class="col-lg-10 col-md-12 col-sm-12 col-12">
+                        <mat-form-field class="example-form-field container-fluid" appearance="fill">
+                            <mat-label>Search for a job</mat-label>
+                            <span matPrefix>
+                                <mat-icon class="me-2 text-secondary">search</mat-icon> &nbsp;
+                            </span>
+                            <input matInput type="text" [(ngModel)]="fill" (keyup.enter)="keJobList()"
+                                (change)="page = 1" id="keyword" name="keyword" #keyword>
+                            <button *ngIf="fill" matSuffix mat-icon-button aria-label="Clear" (click)="fill=''">
+                                <mat-icon style="border: none;">close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-2 col-md-12 col-sm-12 col-12">
+                        <div class="input-group-append">
+                            <button class="btn btn-search bg-primary rounded-pill px-5 py-2 container-fluid mt-2"
+                                type="button" id="button-addon2" (click)="keJobList()"
+                                (change)="page = 1">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content" hidden>
+                    <div class="col-md-12">
+                        <div class="button-wrapper btn-container-left">
+
+                            <a class="btn btn-outline-primary rounded-pill dropdown-toggle px-3" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Location
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+
+
+                            <a class="btn btn-outline-primary rounded-pill dropdown-toggle px-3" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Job Type
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+
+
+                            <a class="btn btn-outline-primary rounded-pill dropdown-toggle px-3" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Job Function
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+
+                            <a class="btn btn-outline-primary rounded-pill dropdown-toggle px-3" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Date Posted
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-result pb-4 pt-2">
+            <h1>Result for “{{ fill }}”</h1>
+            <pagination-template #p="paginationApi" (pageChange)="page = $event">
+                <h5>{{getStartIndex(p.getCurrent(), p.getLastPage())}}-{{getLastIndex(p.getCurrent(),
+                    p.getLastPage())}} of {{this.testModel.recentJobs?.length}} job matches</h5>
+            </pagination-template>
+        </div>
+        <div *ngIf="testModel.recentJobs==0" class="my-5">
+            <h2 class="fw-bold">No Job Found</h2>
+        </div>
+        <div class="section-white"
+            *ngFor="let job of testModel.recentJobs | paginate: { itemsPerPage: 2, currentPage: page }">
+            <div class="card border-0">
+                <div class="section-title">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-1 photo-border">
+                                    <img src="assets/ideaco.png" alt="">
+                                </div>
+                                <div class="col-md-7">
+                                    <h5><a routerLink="detail/{{job.jobId}}" class="text-dark"> {{
+                                            job.jobName
+                                            }}
+                                            <span class="badge ms-1"
+                                                [ngStyle]="{'color': (job.jobPosition === 'Contractual') ? '#006EFF' : (job.jobPosition === 'Internship') ? '#ff9900' : (job.jobPosition === 'Part Time') ? '#ff0000' : (job.jobPosition === 'Full time') ? 'green' : ''}">{{job.jobPosition}}</span>
+                                        </a>
+                                    </h5>
+                                    <a href="" class="recruiter-company">
+                                        {{ job.recruiterCompany }}
+                                    </a>
+                                    <p class="text-secondary pt-2">{{ job.jobAddress }}</p>
+                                    <p>Rp {{ job.jobSalary }}</p>
+                                    <span class="text-secondary">{{ job.createdAt }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-button">
+                            <button type="button" class="btn btn-outline-primary rounded-pill" hidden>
+                                <img src="assets/save.svg" alt="" class="filter-blue"> Save this
+                                job</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <pagination-template #p="paginationApi" (pageChange)="page = $event">
+            <div class="row no-gutters">
+                <div class="col-md-7 ms-auto">
+                    <div class="custom-pagination d-flex">
+                        <div class="page-button me-auto">
+                            <button type="button" class="btn btn-primary rounded-pill me-1" (click)="p.previous()"
+                                *ngIf="p.isFirstPage()===false">Previous Page
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary rounded-pill me-1"
+                                (click)="p.previous()" *ngIf="p.isFirstPage()===true"
+                                [disabled]="p.isFirstPage()===true">Previous Page
+                            </button>
+                            <button type="button" class="btn btn-primary rounded-pill me-1" (click)="p.next()"
+                                *ngIf="p.isLastPage()===false">Next Page
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary rounded-pill me-1" (click)="p.next()"
+                                *ngIf="p.isLastPage()===true" [disabled]="p.isLastPage()===true">Next Page
+                            </button>
+                        </div>
+                        <div class="page-number">
+                            <span>
+                                <select name="pageToggle" id="pageToggle" [(ngModel)]="page"
+                                    class="form-select form-select-sm">
+                                    <ng-container *ngFor="let item of createRange(p.getLastPage())">
+                                        <option [ngValue]="item.value" (change)="page=item.value">
+                                            {{item.value}}
+                                        </option>
+                                    </ng-container>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="pagination-icon pagination-previous ps-2 pe-1">
+                            <span *ngIf="!p.isFirstPage()" (click)="p.previous()">
+                                <img src="../../../../assets/previous.png" alt="">
+                            </span>
+                        </div>
+                        <div class="pagination-icon pagination-next ps-1 pe-2">
+                            <span *ngIf="!p.isLastPage()" (click)="p.next()">
+                                <img src="../../../../assets/next.png" alt="">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </pagination-template>
+    </div>
+</section>
+<section class="jobseeker-quote" id="jobseeker-quote">
+    <div class="container">
+        <div class="row">
+            <div class="banner-quote justify-content-center align-self-center">
+                <h2 class="italic-quote ">“Opportunities don't happen, you create them”</h2>
+                <h2>Find the career opportunity with Toptalent</h2>
+                <button type="button" class="btn btn-biru rounded-pill px-5 mt-4" routerLink="/login">Get
+                    Hired Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="qr-section" id="qr-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 phone-content ">
+                <img src="assets/phone.png" alt="">
+            </div>
+            <div class="col-md-7 qr-content ">
+                <div class="row">
+                    <div class="px-3 py-3">
+
+                        <h2 class="fw-bolder">Your job-searching partner is always on your side </h2>
+                        <h2>We are available on Mobile version. Grab your phone, download Toptalent App and get
+                            hired!
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <img src="assets/qr.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer" class="footer">
+    <svg class="svg-1" viewBox="0 0 1920 231" fill="none">
+        <path
+            d="M0 231C0 231 201.039 139.477 723.441 129.775C1245.84 120.073 1432.36 74.5933 1474.5 62.965C1516.64 51.3366 1669.26 1.15606 1920 0V231H0Z"
+            fill="#006EFF" />
+    </svg>
+    <div class="footer-content px-5 py-5">
+        <img src="assets/toptalent.png" alt="">
+        <p>©2022 Toptalent. All Rights Reserved</p>
+    </div>
+</footer>

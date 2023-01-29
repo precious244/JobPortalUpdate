@@ -1,0 +1,56 @@
+<section class="settings">
+    <div class="contain">
+        <h5 class="fw-bold mt-2">Settings</h5>
+        <div class="col-md-8">
+            <div class="row mt-4">
+                <div class="section-white">
+                    <h4>Change e-mail</h4>
+                    <br>
+                    <p>Your current e-mail address</p>
+                    <div class="d-flex">
+                        <p class="fw-bold me-2">{{ profile.jobseekerEmail }}</p>
+                        <div class="verified d-flex">
+                            <img src="assets/check-badge.svg" alt="">
+                            <p class="ms-1">Verified</p>
+                        </div>
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <ngx-mat-intl-tel-input [preferredCountries]="['us', 'gb']" [enablePlaceholder]="true"
+                            name="phone" #phone>
+                        </ngx-mat-intl-tel-input>
+                    </mat-form-field>
+                    <br>
+                    <p>To change your e-mail, please complete the following fields.</p>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Current Password</label>
+                        <input type="email" class="form-control" placeholder="Enter Password here">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">New e-mail address</label>
+                        <input type="email" class="form-control" placeholder="Enter new e-mail here">
+                    </div>
+                    <button class="btn btn-primary px-4 py-0 rounded-pill">Save</button>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="section-white">
+                    <h4>Change Password</h4>
+                    <br>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Current Password</label>
+                        <input type="email" class="form-control" placeholder="Enter Password here">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">New Password</label>
+                        <input type="email" class="form-control" placeholder="Enter new password here">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Re-type new password</label>
+                        <input type="email" class="form-control" placeholder="Re-type new password">
+                    </div>
+                    <button class="btn btn-primary px-4 py-0 rounded-pill">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+$abu : #F3F3F3;
+$abu2 : #F7F7F7;
+$abu3 : #cecece;
+$abu4 : #F0F0F0;
+$abu5 : #D9D9D9;
+$abu6 : #95979D;
+$hijau : #149E48;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.contain {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.section-white {
+    background-color: white;
+    border-radius: 15px;
+    padding: 35px 30px;
+    margin-bottom: 20px;
+    border: 1px solid $abu3;
+    font-size: 14px;
+
+    h4 {
+        font-weight: 600;
+    }
+
+    button {
+        padding-left: auto !important;
+    }
+
+
+    .country-selector {
+        opacity: 10000 !important;
+        bottom: 8px !important;
+    }
+
+    input:not(.country-search) {
+        bottom: 3px;
+        left: 10px;
+    }
+
+    .mat-menu-content:not(:empty) {
+        max-height: 250px;
+    }
+
+
+    .country-list-button {
+        font-size: 0.8rem !important;
+    }
+}
+
+.verified {
+    color: $biru;
+
+    img {
+        margin-top: -15px;
+    }
+}

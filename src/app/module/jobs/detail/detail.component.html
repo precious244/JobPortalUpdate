@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="section-title">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row pb-4">
+                    <div class="col-md-1 photo-border">
+                        <img src="assets/ideaco.png" alt="">
+                    </div>
+                    <div class="col-md-7">
+                        <h5>{{ job.jobName }} 
+                            <!-- <span class="badge ms-1"
+                                [ngStyle]="{'color': (job.jobPosition === 'Contractual') ? '#006EFF' : 
+                                (job.jobPosition === 'Freelance') ? '#E051C1' : 
+                                (job.jobPosition === 'Internship') ? '#ff9900' : 
+                                (job.jobPosition === 'Part-time') ? '#16C39A' : 
+                                (job.jobPosition === 'Full time') ? 'green' : ''}">
+                                {{job.jobPosition}}
+                            </span>  -->
+                        </h5>
+                        <a href="">
+                            {{ job.recruiterCompany }}
+                        </a>
+                        <p class="text-secondary pt-2">{{ job.jobAddress }}</p>
+                        <p>Rp {{ job.jobSalary }}</p>
+                        <span class="text-secondary">1 day ago</span>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <a (click)="submitApply()" class="btn btn-primary rounded-pill px-4" type="button">Apply
+                        Now</a>
+                    <a type="button" class="btn btn-outline-primary rounded-pill" hidden>
+                        <img src="assets/share.svg" alt="" class="filter-blue" width="20px" height="20px"> Share this
+                        job</a>
+                    <a type="button" class="btn btn-outline-primary rounded-pill" hidden>
+                        <img src="assets/save.svg" alt="" class="filter-blue"> Save this
+                        job</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="my-4">
+    <div class="section-job">
+        <h4 class="fw-bolder mb-4">About the job</h4>
+        <h5 class="fw-bold">Job requirement:</h5>
+        <div class="my-4" [innerHTML]="job.jobRequirement">
+            {{ job.jobRequirement}}
+        </div>
+
+        <h5 class="fw-bold">Job Description:</h5>
+        <div class="my-4" [innerHTML]="job.jobDesc">
+            {{ job.jobDesc}}
+        </div>
+    </div>
+    <hr class="my-5">
+    <div class="section-company">
+        <div class="mb-4">
+
+            <h4 class="fw-bolder">About the company</h4>
+            <p>{{job.recruiterDesc}}</p>
+        </div>
+        <h5 class="fw-bold">
+            Staff
+        </h5>
+        <p>{{ job.recruiterStaff}}</p>
+        <h5 class="fw-bold">
+            Industry
+        </h5>
+        <p [innerHTML]="job.recruiterIndustry">{{ job.recruiterIndustry}}</p>
+        <h5 class="fw-bold">
+            Culture
+        </h5>
+        <p [innerHTML]="job.recruiterCulture">{{ job.recruiterCulture}}</p>
+        <h5 class="fw-bold">
+            Benefit
+        </h5>
+        <p [innerHTML]="job.recruiterBenefit">{{ job.recruiterBenefit}}</p>
+        <h5 class="fw-bold">
+            Address
+        </h5>
+        <p [innerHTML]="job.recruiterAddress">{{ job.recruiterAddress}}</p>
+
+        <div class="icon">
+
+            <a href="{{ job.recruiterFb}}" target="_blank"><img src="../../../../assets/fb.svg" alt=""></a>
+            <a href="{{ job.recruiterLinkedin}}" target="_blank"><img src="../../../../assets/linkedin.svg" alt=""></a>
+            <a href="recruiterIg" target="_blank"><img src="../../../../assets/instagram.svg" alt=""></a>
+            <a href="recruiterWebsite" target="_blank"><img src="../../../../assets/web.svg" alt=""></a>
+        </div>
+    </div>
+</div>

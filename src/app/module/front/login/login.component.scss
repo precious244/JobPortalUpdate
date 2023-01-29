@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contentBox {
+  background-size: cover;
+  border-radius: 32px;
+  position: relative;
+  margin-top: 20px;
+
+  img {
+    margin-left: 10px;
+  }
+
+  @media (max-width: 767.98px) {
+    img {
+      height: 500px;
+      width: 500px;
+      padding: 20px 0 20px 0;
+    }
+  }
+
+  @media (min-width: 500px) {
+    .text-right {
+      font-size: 12px;
+      margin-left: 260px;
+    }
+  }
+
+}
+
+.h4 {
+  font-weight: 900px;
+  padding-left: 11px;
+}
+
+.h5 {
+  color: #FFFFFF;
+  position: absolute;
+  font-weight: 900;
+}
+
+.text1 {
+  padding-top: 60px;
+  padding-left: 100px;
+  padding-right: 100px;
+  line-height: 20px;
+  padding-bottom: 679px;
+}
+
+.text2 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.text-secondary {
+  padding-left: 12px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.text-s {
+  position: relative;
+  margin-left: 10px;
+  bottom: 20px;
+}
+
+@media (min-width: 500px) {
+  .text2 {
+    font-size: 20px;
+  }
+
+  .text-secondary {
+    font-size: 13px;
+  }
+}
+
+.text-gray {
+  position: absolute;
+  border-radius: 36px;
+  width: 79px;
+  height: 20px;
+  left: 1162px;
+  top: 253px;
+  font-size: 16px;
+}
+
+.text-right {
+  font-style: normal;
+  font-size: 12px;
+  text-decoration: underline;
+  text-align-last: right;
+  font-weight: 600;
+  line-height: 20px;
+  margin-left: 300px;
+}
+
+@media (min-width: 500px) {
+  .text-right {
+    font-size: 12px;
+    margin-left: 260px;
+  }
+}
+
+.text-weight {
+  font-weight: 900;
+}
+
+.text-gray-900 {
+  color: #333333 !important;
+}
+
+.mb-4,
+.my-4 {
+  margin-bottom: 15px !important;
+}
+
+.position {
+  position: relative;
+  bottom: 20px;
+}
+
+.hw {
+  margin-left: 12px;
+}
+
+.icon {
+  width: 17px;
+}
+
+.margin-form {
+  margin-left: 40px;
+}
+
+.form-group {
+  border-radius: 8px;
+  margin: 12px;
+}
+
+.form-group-2 {
+  position: relative;
+  margin-left: 12px;
+  bottom: 50px;
+}
+
+.font-style-btn {
+  font-size: 20px;
+  background-color: #ECF3FF;
+  position: relative;
+  text-align: center;
+  border-radius: 36px;
+  width: 500px;
+  margin-left: 12px;
+}
+
+.custom-control-label {
+  font-style: normal;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #006EFF;
+  border-color: #006EFF;
+}
+
+.btn-user {
+  background: #006EFF;
+  margin-bottom: 15px;
+}
+
+.btn-block {
+  border-radius: 36px;
+  margin-right: 140px;
+  margin-left: 15px;
+}
+
+.btn-text {
+  text-align: center;
+}
+
+.text3 {
+  color: #95979D;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.small {
+  font-weight: 500;
+}
+
+.form-control {
+  display: block;
+  background-color: #EFF0F2;
+  margin-right: 200px;
+}
+
+.form-control-user {
+  font-size: 0.8rem;
+  border-radius: 8px;
+  height: 40px;
+  width: 500px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-eye {
+  position: relative;
+  left: 450px;
+  bottom: 50px;
+  cursor: pointer;
+}
+
+.icon-email {
+  position: relative;
+  left: 450px;
+  bottom: 30px;
+}
+
+@media (min-width: 500px) {
+  .position2 {
+    position: relative;
+    right: 20px;
+  }
+  
+}
+
+.text-position {
+  position: relative;
+  bottom: 15px;
+}

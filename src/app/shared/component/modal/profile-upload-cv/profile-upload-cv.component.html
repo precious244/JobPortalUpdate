@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+    <div class="modal-content border-0">
+        <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Edit CV or Resume</h5>
+            <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img [src]="url" alt="" loading="lazy">
+            <h5 class="mb-2">{{fileName == '' ?'Drop Your Cv Here':fileName }}</h5>
+            <p class="text-center text-secondary" [style]="available">or</p>
+            <input #file (change)="onChange($event)" [class]="btnBg" type="button" [value]="status" accept="application/pdf">
+            <input (change)="onChange($event)" class="hidden-input-file" type="file" accept="application/pdf">
+            <p class="text-danger mt-2">{{file_error}}</p>
+            <p class="text-secondary file-req">Acceptable file types are DOC, DOCX, PDF that is up to 10MB.</p>
+        </div>
+        <div class="modal-footer" [hidden]="invisible">
+            <button (click)="upload()" class="btn bg-primary rounded-pill px-5">
+                Submit
+            </button>
+            <!-- <button (click)="resetFileUploader()" class="btn btn-outline-danger rounded-pill px-5">
+                Delete
+            </button> -->
+        </div>
+    </div>
+</div>

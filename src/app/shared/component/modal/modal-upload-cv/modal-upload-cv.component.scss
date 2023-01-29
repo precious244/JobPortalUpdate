@@ -1,0 +1,54 @@
+.modal-body {
+    border: 2px dashed #95979D;
+    border-radius: 10px;
+    margin: 15px;
+    padding-bottom: 30px;
+
+    .file-req {
+        margin-top: 13px;
+        font-size: 13px;
+    }
+}
+
+.modal-header {
+    padding-top: 0;
+    margin-top: 0;
+
+    h5 {
+        font-weight: 900;
+    }
+}
+
+.modal-footer {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+img {
+    max-width: 150px;
+    max-height: 300px;
+    margin-bottom: 20px;
+}
+
+button {
+    color: white;
+}
+
+button:hover {
+    color: white;
+}
+
+input[type='button'] {
+    width: 200px;
+    z-index: 1000;
+}
+
+.hidden-input-file {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    opacity: 0;
+}

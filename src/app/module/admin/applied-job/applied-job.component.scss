@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet');
+
+
+$biru : #006EFF;
+$biru_card : #ECF3FF;
+$abu : #F3F3F3;
+$abu2 : #F7F7F7;
+$abu3 : #cecece;
+$abu4 : #F0F0F0;
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+mat-icon {
+    border: hidden !important;
+    color: black;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+    background: white;
+    border: 2px solid $abu3;
+
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+
+
+
+.find-jobs {
+
+    .contain {
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        background-color: $abu;
+    }
+
+    .section-white {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section-search-grey {
+        background-color: $abu2;
+        border-radius: 5px;
+        padding: 20px;
+        border: 2px solid $abu3;
+
+        button {
+            color: white;
+            border: white;
+            background: unset;
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-around;
+        }
+
+        @media (max-width: 767.98px) {
+            .button-wrapper .btn {
+                margin: 20px 0px;
+            }
+        }
+
+        @media (min-width: 520px) {
+            .button-wrapper {
+                align-items: center;
+                flex-flow: row wrap;
+                -ms-flex-flow: row wrap;
+                -webkit-flex-flow: row wrap;
+            }
+
+            .btn-container-left>a.btn {
+                margin-left: 12px;
+                margin-right: 2px;
+            }
+
+            .btn-container-left {
+                justify-content: flex-start;
+            }
+
+            .btn-container-left>a.btn:first-of-type {
+                margin-left: 0;
+            }
+
+            .btn-container-left>a.btn:last-of-type {
+                margin-right: 0;
+            }
+
+            .btn-container-col-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+    }
+
+    .section-title {
+        border: 10px solid white;
+
+        .btn {
+            background-color: $abu;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            background-color: $abu4;
+        }
+
+        @media (max-width: 767.98px) {
+            .photo-border {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+
+            .photo-border {
+                margin-right: 90px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .photo-border {
+                margin-right: 60px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .photo-border {
+                margin-right: 60px;
+            }
+        }
+
+
+
+        img {
+            width: 120px;
+        }
+
+        .col-button {
+            display: grid;
+
+            @media (max-width: 767.98px) {
+                button {
+                    margin-top: 20px !important;
+                }
+            }
+
+            button {
+                margin: auto;
+
+                img {
+                    margin-top: -5px;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 5px;
+                    filter: invert(25%) sepia(92%) saturate(2460%) hue-rotate(207deg) brightness(101%) contrast(105%);
+                }
+            }
+
+            button:hover {
+                margin: auto;
+
+                img {
+                    margin-top: -5px;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 5px;
+                    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(263deg) brightness(103%) contrast(101%);
+                }
+            }
+        }
+    }
+
+    .section-job-list {
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .job-list-text {
+            margin-left: 3%;
+
+
+        }
+
+
+
+    }
+
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: 120px;
+        border-radius: 15px;
+    }
+
+    .custom-pagination {
+        justify-content: flex-end;
+    }
+
+    .example-label {
+        display: table-cell;
+        font-size: 14px;
+        margin-left: 8px;
+        min-width: 120px;
+    }
+
+    .example-button-row {
+        display: table-cell;
+        max-width: 600px;
+    }
+
+    .example-button-row .mat-mdc-button-base {
+        margin: 8px 8px 8px 0;
+    }
+
+    .example-flex-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .example-button-container {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+    }
+}

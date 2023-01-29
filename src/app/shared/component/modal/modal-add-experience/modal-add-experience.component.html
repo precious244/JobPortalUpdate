@@ -1,0 +1,161 @@
+<div class="modal-dialog">
+    <div class="modal-content border-0">
+        <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
+            <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <form class="form-group" [formGroup]="expModel.editExperience">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Job Title</label>
+                            <input formControlName="jobTitle" type="text" class="form-control" id="exampleInputText1"
+                                placeholder="Type your job title">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="select" class="form-label">Job Type</label>
+                            <select formControlName="jobTypeId" id="Select" class="form-select">
+                                <option value="" disabled selected hidden>Full-time</option>
+                                <option value="1">Internship</option>
+                                <option value="2">Fulltime</option>
+                                <option value="3">Part-time</option>
+                                <option value="4">Contractual</option>
+                                <option value="4">Freelance</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="">
+                            <label for="select" class="form-label">Company Name</label>
+                            <mat-form-field class="example-full-width form1" appearance="outline" floatLabel="never">
+                                <mat-label>Choose your Company</mat-label>
+                                <input placeholder="ex. PT Toptalent Indonesia" matInput type="text" [matAutocomplete]="auto" formControlName="companyName">
+                                    <mat-autocomplete #auto>
+                                        <mat-option *ngFor="let item of expModel.allCompany"
+                                            [value]="item.companyName">
+                                            {{item.companyName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="form-group">
+                                <label for="select" class="form-label">Job Function</label>
+                                <select formControlName="jobFunctionId" class="form-select">
+                                    <option value="" disabled selected hidden>ex. Software Engineer</option>
+                                <option *ngFor="let item of expModel.allJobFunction" [value]="item.jobFunctionId">{{item.jobFunction}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="select" class="form-label">Select Country</label>
+                                <select [(ngModel)]="profile.jobseekerCountry" formControlName="countryId" class="form-select" (change)="onChangeCountry($any($event.target).value)">
+                                    <option *ngIf="expModel.allCountry == ''" value="0">Country</option>
+                                    <option *ngFor="let item of expModel.allCountry" value="{{item.countryId}}">{{item.countryName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label for="select" class="form-label">Select City</label>
+                                <select [(ngModel)]="profile.jobseekerCity" formControlName="cityId" class="form-select">
+                                    <option *ngIf="expModel.allCity == ''" value="-1">City</option>
+                                    <option *ngFor="let item of expModel.allCity" value="{{item.cityId}}">{{item.cityName}}</option>
+                                </select> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label for="select" class="form-label">Period</label>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="select" class="form-label">Start date</label>
+                        <select formControlName="startPeriodMonth" id="Select" class="form-select">
+                            <option value="" disabled selected hidden>Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="select" class="form-label" style="visibility: hidden;">Start date</label>
+                        <select id="year-picker" class="form-select" formControlName="startPeriodYear">
+                            <option value="" disabled selected hidden>Year</option>
+                            <option *ngFor="let year of startPeriodYearOptions" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="select" class="form-label">End date/Expected</label>
+                        <select formControlName="endPeriodMonth" id="Select" class="form-select">
+                            <option value="" disabled selected hidden>Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="select" class="form-label" style="visibility: hidden;">Start date</label>
+                        <select id="year-picker" class="form-select" formControlName="endPeriodYear">
+                            <option value="" disabled selected hidden>Year</option>
+                            <option *ngFor="let year of endPeriodYearOptions" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="form-label">Description</label>
+                        <textarea placeholder="Try to mention what are your job descriptions and achievements to make recruiter know your skill and ability clearly."
+                         cols="92" rows="15" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="jobDescription"></textarea>
+                        <div>
+                            {{numberOfCharacters1}} / {{maxNumberOfCharacters}}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer border-0">
+            <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
+                Cancel
+            </button>
+            <button (click)="updateData()" class="btn btn-primary rounded-pill px-5">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>
