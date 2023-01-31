@@ -10,7 +10,7 @@ export class EditExperienceModel {
     userProfile: any = [];
     dataExperience: any = [];
     experience: any = [];
-    
+
     editExperience = new FormGroup({
         jobseekerId: new FormControl(""),
         experienceId: new FormControl(""),
@@ -24,6 +24,7 @@ export class EditExperienceModel {
         endPeriodMonth: new FormControl(""),
         startPeriodYear: new FormControl(""),
         endPeriodYear: new FormControl(""),
+        isPresent: new FormControl(""),
         jobDescription: new FormControl("", Validators.maxLength(2000)),
     });
 }

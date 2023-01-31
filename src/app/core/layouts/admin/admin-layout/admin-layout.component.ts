@@ -5,6 +5,7 @@ import { ProfileModel } from 'src/app/module/admin/profile/model/profile.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { AdminLayoutModel } from './model/admin-layout.model';
 
 @Component({
   selector: 'app-admin-layout',
@@ -19,7 +20,8 @@ export class AdminLayoutComponent implements OnInit {
   profile: any = {};
   status: boolean = false;
   profileModel = new ProfileModel();
-  
+  adminLayoutModel = new AdminLayoutModel();
+
   constructor(
     public readonly authService: AuthService,
     public readonly loaderService: LoaderService,
@@ -37,18 +39,16 @@ export class AdminLayoutComponent implements OnInit {
     if (this.authService.isLogin()) {
       this.userData = this.authService.loadUserData()
     }
-    // this.activatedRoute.paramMap.subscribe((data: any) => {
-    //   let id = data.params.id,
-    //     params = {
-    //       jobseekerId: id,
-    //     }
-    //   this.profileService.getUserProfile(params).subscribe(
-    //     (response: any) => {
-    //       this.profileModel.userProfile = response.data;
-    //       this.profile = this.profileModel.userProfile;
-    //     })
-    //   })
-    }
+    this.adminLayoutModel.uploadCVForm.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+    this.profileService.getUserProfile(this.adminLayoutModel.uploadCVForm.value).subscribe(
+      (response: any) => {
+        this.adminLayoutModel.userProfile = response.data;
+        this.profile = this.adminLayoutModel.userProfile;
+        console.log(this.profile)
+      },
+      (error) => {
+      })
+  }
 
   logout() {
     this.authService.logOut()

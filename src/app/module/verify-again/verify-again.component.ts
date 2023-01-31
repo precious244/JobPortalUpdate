@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { VerifyEmailService } from 'src/app/services/verify-email/verify-email.service';
 import { VerifModel } from '../verif/model/verif.model';
@@ -31,6 +32,10 @@ export class VerifyAgainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.verifModel.formGroupRegister.controls;
   }
 
   sendingEmailAgain(): void {

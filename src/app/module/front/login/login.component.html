@@ -20,18 +20,12 @@
                     type="email" class="form-control form-control-user"
                         id="exampleInputEmail" aria-describedby="emailHelp" placeholder="youremail@mail.com" required>
                     <mat-icon class="icon-email"> email</mat-icon>
-                    <!-- <div class="text-secondary text-s"
-                        *ngIf="!loginModel.formGroupLogin.controls['jobseekerEmail'].valid">
-                        <span style="color: red;">A valid email is required</span>
-                    </div> -->
-                    <div *ngIf="f['jobseekerEmail'] && (f['jobseekerEmail'].touched || f['jobseekerEmail'].dirty)">
+                    <div *ngIf="f['jobseekerEmail'] && (f['jobseekerEmail'].touched || f['jobseekerEmail'].dirty)  && 
+                    !f['jobseekerEmail'].valid">
                         <div *ngIf="f['jobseekerEmail'].errors">
-                            <p *ngIf="f['jobseekerEmail'].errors['required']" class="text-secondary text-s">
-                                <span style="color: red;">Oops!</span> Email is required
-                            </p>
-                            <p *ngIf="f['jobseekerEmail'].errors['jobseekerEmail']" class="text-secondary text-s">
-                                <span style="color: red;">Oops!</span> Format email wrong
-                            </p>
+                            <div *ngIf="!loginModel.formGroupLogin.controls['jobseekerEmail'].valid" class="text-secondary text-s">
+                                <span style="color: red;">A valid email is required</span> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,6 +36,17 @@
                         placeholder="Enter your password" minlength="8" required="">
                     <mat-icon class="icon-eye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                         'visibility'}}</mat-icon>
+                    <div *ngIf="f['jobseekerPassword'] && (f['jobseekerPassword'].touched || f['jobseekerPassword'].dirty)  && 
+                         !f['jobseekerPassword'].valid">
+                        <div *ngIf="f['jobseekerPassword'].errors">
+                            <div *ngIf="!loginModel.formGroupLogin.controls['jobseekerPassword'].valid" class="text-secondary text-s text-position2">
+                                <span style="color: red;">
+                                    Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
+                                    more characters
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group-2">
                     <div class="custom-control custom-checkbox small d-flex">

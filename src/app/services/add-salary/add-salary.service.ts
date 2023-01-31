@@ -20,7 +20,7 @@ export class AddSalaryService {
       .set('expectedMinimum', body.expectedMinimum)
       .set('expectedMaximum', body.expectedMaximum);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/detail/salary', params);
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/detail/salary', params);
   }
 
   public editSalary(body: any): Observable<any> {
@@ -32,11 +32,11 @@ export class AddSalaryService {
     formData.append("expectedMinimum", body.expectedMinimum);
     formData.append("expectedMaximum", body.expectedMaximum);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/detail/salary', formData)
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/detail/salary', formData)
   }
 
   public getCurrency(): Observable<any> {
-    const url = 'http://54.251.83.205:9091/api/v1/jobseeker/education/get-currency';
+    const url = 'http://54.255.4.75:9091/api/v1/jobseeker/education/get-currency';
     return this.http.get(url);
   }
 
@@ -47,7 +47,7 @@ export class AddSalaryService {
   public getSalaryId(body: any): Observable<unknown> {
     const params = new HttpParams()
       .set('jobseekerId', body.jobseekerId);
-    return this.http.get('http://54.251.83.205:9091/api/v1/jobseeker/salary/detail', { params: params });
+    return this.http.get('http://54.255.4.75:9091/api/v1/jobseeker/salary/detail', { params: params });
   }
 
   public updateSalary(body: any): Observable<any> {
@@ -60,7 +60,7 @@ export class AddSalaryService {
     formData.append('expectedMinimum', body.expectedMinimum)
     formData.append('expectedMaximum', body.expectedMaximum);
 
-    return this.http.patch('http://54.251.83.205:9091/api/v1/jobseeker/update/salary/', formData);
+    return this.http.patch('http://54.255.4.75:9091/api/v1/jobseeker/update/salary/', formData);
   }
   
 

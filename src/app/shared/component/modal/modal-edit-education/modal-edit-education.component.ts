@@ -21,7 +21,7 @@ export class ModalEditEducationComponent {
   jobseekerId: any;
   submitted: boolean = false;
   chosenYearDate: Date | undefined;
-  education :any = {};
+  education: any = {};
 
   @Input()
   maxNumberOfCharacters = 2000;
@@ -32,7 +32,7 @@ export class ModalEditEducationComponent {
   interaction = {
     textValue: ''
   };
-  
+
   constructor(
     public activeModal: NgbActiveModal,
     public readonly authService: AuthService,
@@ -70,21 +70,21 @@ export class ModalEditEducationComponent {
 
     this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
     this.profileService.getEduList(this.educationModel.formGroupAddEducation.value).subscribe(
-        (response: any) => {
-          var educationId = response.data[0]['educationId']
-          this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
-          console.log(this.educationModel.formGroupAddEducation.value, educationId)
-          this.profileService.getEduDetail(this.educationModel.formGroupAddEducation.value).subscribe(
-            (data: any) => {
-              this.educationModel.dataEducation = data.data;
-              this.education = this.educationModel.dataEducation;
-            })
+      (response: any) => {
+        var index = this.profileService.getIndex()
+        var educationId = response.data[index]['educationId']
+        this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
+        this.profileService.getEduDetail(this.educationModel.formGroupAddEducation.value).subscribe(
+          (data: any) => {
+            this.educationModel.dataEducation = data.data;
+            this.education = this.educationModel.dataEducation;
           })
-        }
+      })
+  }
 
   onKeyUp(event: any): void {
     this.numberOfCharacters1 = event.target.value.length;
-  
+
     if (this.numberOfCharacters1 > this.maxNumberOfCharacters) {
       event.target.value = event.target.value.slice(0, this.maxNumberOfCharacters);
       this.numberOfCharacters1 = this.maxNumberOfCharacters;
@@ -92,22 +92,24 @@ export class ModalEditEducationComponent {
   }
 
   roleData2 = [];
-  updateEducation(){
+  updateEducation() {
     this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
     this.profileService.getEduList(this.educationModel.formGroupAddEducation.value).subscribe(
-        (response: any) => {
-          // console.log(response['data'][0]['educationId'])
-          var educationId = response.data[0]['educationId']
-          this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
-          this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
-          console.log(this.educationModel.formGroupAddEducation.value, educationId)
-          this.profileService.updateEducation(this.educationModel.formGroupAddEducation.value).subscribe(
-            (response: any) => {
-              this.salaryService.saveData(response.data)
-              this.submitted = true
-              this.activeModal.dismiss('Cross click')
-              window.location.reload();
-      })})}
+      (response: any) => {
+        // console.log(response['data'][0]['educationId'])
+        var educationId = response.data[0]['educationId']
+        this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
+        this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+        console.log(this.educationModel.formGroupAddEducation.value, educationId)
+        this.profileService.updateEducation(this.educationModel.formGroupAddEducation.value).subscribe(
+          (response: any) => {
+            this.salaryService.saveData(response.data)
+            this.submitted = true
+            this.activeModal.dismiss('Cross click')
+            window.location.reload();
+          })
+      })
+  }
 
 }
 

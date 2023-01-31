@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ProfileService {
 
-  urlCityCountry :string = "https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json";
-
+  urlCityCountry: string = "https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json";
+  index = 0;
   constructor(private http: HttpClient) { }
 
-  allCountries(): Observable<any>{
+  allCountries(): Observable<any> {
     return this.http.get("assets/Contries.json");
   }
 
@@ -58,9 +58,17 @@ export class ProfileService {
 
     return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/detail/salary', params);
   }
-  
+
   public editSkill(body: any): Observable<any> {
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/add/skill', body);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    console.log(JSON.stringify(body))
+
+    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/add/skill', JSON.stringify(body), httpOptions);
   }
 
   editProfile(body: any): Observable<any> {
@@ -150,7 +158,7 @@ export class ProfileService {
     formData.append("educationId", body.educationId);
     return this.http.patch('http://54.251.83.205:9091/api/v1/jobseeker/delete/education/', formData)
   }
-  
+
   public getAllJobType(): Observable<any> {
     const url = 'http://54.251.83.205:9091/api/v1/jobseeker/experience/get-job-type';
     return this.http.get(url);
@@ -219,5 +227,13 @@ export class ProfileService {
     formData.append("endPeriodYear", body.endPeriodYear)
     formData.append("jobDescription", body.jobDescription)
     return this.http.patch('http://54.251.83.205:9091/api/v1/jobseeker/update/experience/', formData);
+  }
+
+  public setIndex(index: number) {
+    this.index = index;
+  }
+
+  public getIndex() {
+    return this.index;
   }
 }

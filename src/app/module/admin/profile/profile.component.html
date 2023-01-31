@@ -20,8 +20,8 @@
                             <div class="row">
                                 <div class="col-sm-3 col-12 info-name ">
                                     <p> {{profile.jobseekerProfession || "not filled yet"}}</p>
-                                    <p>{{ profile.cityName || "not filled yet"}}, 
-                                        {{profile.countryName || "not filled yet"}} 
+                                    <p>{{ profile.cityName || "not filled yet"}},
+                                        {{profile.countryName || "not filled yet"}}
                                     </p>
                                     <div class="d-flex statusHijau" *ngIf="profile.jobseekingStatus == 1">
                                         <mat-icon>lens</mat-icon>
@@ -39,10 +39,14 @@
                                 <div class="col-sm-3 col-12 info-img">
                                     <p>{{ profile.jobseekerPhone || "not filled yet" }}</p>
                                     <p>{{ profile.jobseekerEmail || "not filled yet" }}</p>
-                                    <a href="{{ profile.jobseekerLinkedin }}" target="_blank"><img src="assets/linkedin.svg" alt="" class="me-1"></a>
-                                    <a href="{{ profile.jobseekerInstagram }}" target="_blank"><img src="assets/instagram.svg" alt="" class="me-1"></a>
-                                    <a href="{{ profile.jobseekerFacebook }}" target="_blank"><img src="assets/image/facebookicon.svg" alt=""></a>
-                                    <a href="{{ profile.jobseekerTwitter }}" target="_blank"><img src="assets/image/twitter-icon.svg" alt=""></a>
+                                    <a href="{{ profile.jobseekerLinkedin }}" target="_blank"><img
+                                            src="assets/linkedin.svg" alt="" class="me-1"></a>
+                                    <a href="{{ profile.jobseekerInstagram }}" target="_blank"><img
+                                            src="assets/instagram.svg" alt="" class="me-1"></a>
+                                    <a href="{{ profile.jobseekerFacebook }}" target="_blank"><img
+                                            src="assets/image/facebookicon.svg" alt=""></a>
+                                    <a href="{{ profile.jobseekerTwitter }}" target="_blank"><img
+                                            src="assets/image/twitter-icon.svg" alt=""></a>
                                 </div>
                                 <div class="col-sm-2 col-12 info-img">
 
@@ -92,7 +96,7 @@
                         <button class="btn btn-sm btn-primary rounded-pill px-4 me-2" (click)="openAddExperience()"><img
                                 src="assets/plus.svg" alt=""><span> Add Experience</span></button>
                     </div>
-                    <div class="row user-job-detail mt-4" *ngFor="let edu of profileModel.experience">
+                    <div class="row user-job-detail mt-4" *ngFor="let edu of profileModel.experience; let j = index">
                         <div class="col-md-1 gambar-default">
                             <img src="assets/ideaco.png" alt="">
                         </div>
@@ -110,15 +114,18 @@
                                     </h6>
                                 </div>
                                 <div class="col-12 col-sm-12 col-xs-10 col-md-2 col-xl-2">
-                                    <button (click)="openEditExperience()" class="btn btn-sm btn-primary rounded-pill px-4 ms-auto">Edit </button>
-                                    <button (click)="deleteExp()"  class="btn btn-sm btn-outline-danger rounded-pill">Delete</button>
+                                    <button (click)="openEditExperience(j)"
+                                        class="btn btn-sm btn-primary rounded-pill px-4 ms-auto">Edit </button>
+                                    <button (click)="deleteExp(j)"
+                                        class="btn btn-sm btn-outline-danger rounded-pill">Delete</button>
                                 </div>
                             </div>
-                                
+
                             <p>{{ edu.jobFunction }}</p>
                             <p>{{ edu.companyName }}</p>
                             <p>{{ edu.status }}</p>
-                            <p>{{ edu.startPeriodMonth }}, {{ edu.startPeriodYear }} - {{edu.endPeriodMonth}}, {{ edu.endPeriodYear }}</p>
+                            <p>{{ edu.startPeriodMonth }}, {{ edu.startPeriodYear }} - {{edu.endPeriodMonth}}, {{
+                                edu.endPeriodYear }}</p>
                             <p>{{ edu.cityName }}, {{edu.countryName}}</p>
                             <p>{{ edu.jobDescription }}</p>
                         </div>
@@ -135,7 +142,7 @@
                         <button class="btn btn-sm btn-primary rounded-pill px-4 me-2" (click)="openAddEducation()"><img
                                 src="assets/plus.svg" alt=""><span> Add Education</span></button>
                     </div>
-                    <div class="row user-job-detail mt-4" *ngFor="let item of profileModel.education">
+                    <div class="row user-job-detail mt-4" *ngFor="let item of profileModel.education; let i = index">
                         <div class="col-xs-2 col-sm-2 col-md-2 col-xl-1 col-12s gambar-default">
                             <img src="assets/university.svg" alt="">
                         </div>
@@ -145,13 +152,16 @@
                                     <h5>{{ item.schoolUniversity }}</h5>
                                 </div>
                                 <div class="col-12 col-sm-12 col-xs-10 col-md-2 col-xl-2 ">
-                                    <button (click)="openEditEducation()" class="btn btn-sm btn-primary rounded-pill px-4 ms-auto">Edit </button>
-                                    <button (click)="deleteEdu()" class="btn btn-sm btn-outline-danger rounded-pill">Delete</button>
+                                    <button (click)="openEditEducation(i)"
+                                        class="btn btn-sm btn-primary rounded-pill px-4 ms-auto">Edit </button>
+                                    <button (click)="deleteEdu(i)"
+                                        class="btn btn-sm btn-outline-danger rounded-pill">Delete</button>
                                 </div>
                             </div>
                             <p>{{ item.degreeName }},
                                 {{ item.majorName }}</p>
-                            <p>{{ item.startPeriodMonth}}, {{ item.startPeriodYear}} - {{ item.endPeriodMonth}}, {{ item.endPeriodYear}}</p>
+                            <p>{{ item.startPeriodMonth}}, {{ item.startPeriodYear}} - {{ item.endPeriodMonth}}, {{
+                                item.endPeriodYear}}</p>
                             <p>GPA : {{ item.gradePoint | number:'0.2-2' }} / {{
                                 item.gradePointMax | number:'0.2-2' }}</p>
                             <p [innerHTML]="item.educationDescription">{{ item.educationDescription}}</p>
@@ -195,8 +205,8 @@
                 <section class="upload-cv section-white" *ngIf="!isUploaded">
                     <div class="d-flex">
                         <h4 class="me-auto">CV or Resume</h4>
-                        <button class="btn btn-sm btn-primary rounded-pill px-4 btn-edit"
-                            (click)=" openUploadCv()"><img src="assets/plus.svg" alt="">
+                        <button class="btn btn-sm btn-primary rounded-pill px-4 btn-edit" (click)=" openUploadCv()"><img
+                                src="assets/plus.svg" alt="">
                             <span> Add Resume</span></button>
                     </div>
                     <div class="row user-job-detail mt-4">
@@ -218,8 +228,8 @@
                     </div>
                     <div class="row mt-4">
                         <div class="d-flex info-img">
-                            <p type="text" style="color: #006EFF;"
-                                *ngIf="profile.jobseekerResume"><img src="assets/small-pdf.svg" alt="">
+                            <p type="text" style="color: #006EFF;" *ngIf="profile.jobseekerResume"><img
+                                    src="assets/small-pdf.svg" alt="">
                                 {{profile.jobseekerResumeName}}</p>
                             <button class="btn btn-sm btn-primary rounded-pill px-4 btn-edit ms-auto"
                                 (click)=" openUploadCv()">

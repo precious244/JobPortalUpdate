@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/toptalent/",
+            "baseHref": "/toptalent_v2/",
             "outputPath": "dist/my-app-pretty",
             "index": "src/index.html",
             "main": "src/main.ts",

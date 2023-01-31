@@ -12,17 +12,27 @@
                 <div class="form-group">
                     <input formControlName="jobseekerFirstName" type="text" id="validationFirstName"
                         class="form-control form-control-user" value="Mark" placeholder="John" required>
-                    <div class="text-three" *ngIf="!registerModel.formGroupRegister.controls['jobseekerFirstName'].valid">
-                        <span style="color: #EB5757;">A field is required</span>
+                    <div *ngIf="f['jobseekerFirstName'] && (f['jobseekerFirstName'].touched || f['jobseekerFirstName'].dirty)  && 
+                    !f['jobseekerFirstName'].valid">
+                        <div *ngIf="f['jobseekerFirstName'].errors">
+                            <div class="text-three" *ngIf="!registerModel.formGroupRegister.controls['jobseekerFirstName'].valid">
+                                <span style="color: #EB5757;">A field is required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p class="text-secondary text-gray-900">Last Name</p>
                 <div class="form-group">
                     <input formControlName="jobseekerLastName" type="text" class="form-control form-control-user"
                         value="Mark" placeholder="Doe" required>
-                    <div class="text-three"
-                        *ngIf="!registerModel.formGroupRegister.controls['jobseekerLastName'].valid">
-                        <span style="color: #EB5757;">A field is required</span>
+                    <div *ngIf="f['jobseekerLastName'] && (f['jobseekerLastName'].touched || f['jobseekerLastName'].dirty)  && 
+                    !f['jobseekerLastName'].valid">
+                        <div *ngIf="f['jobseekerLastName'].errors">
+                            <div class="text-three"
+                                *ngIf="!registerModel.formGroupRegister.controls['jobseekerLastName'].valid">
+                                <span style="color: #EB5757;">A field is required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p class="text-secondary text-gray-900">Personal Email</p>
@@ -31,8 +41,13 @@
                         *ngIf="registerModel.formGroupRegister.controls['jobseekerEmail']"
                         placeholder="yourpersonal@mail.com" class="form-control form-control-user" value="Mark"
                         id="exampleInputEmail" aria-describedby="emailHelp" required>&nbsp;
-                    <div class="text-four" *ngIf="!registerModel.formGroupRegister.controls['jobseekerEmail'].valid">
-                        <span style="color: #EB5757;">A valid email is required</span>
+                    <div *ngIf="f['jobseekerEmail'] && (f['jobseekerEmail'].touched || f['jobseekerEmail'].dirty)  && 
+                    !f['jobseekerEmail'].valid">
+                        <div *ngIf="f['jobseekerEmail'].errors">
+                            <div class="text-four" *ngIf="!registerModel.formGroupRegister.controls['jobseekerEmail'].valid">
+                                <span style="color: #EB5757;">A valid email is required</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p class="text-secondary text-gray-900 text-position">Password</p>
@@ -43,13 +58,18 @@
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9_]).{8,}" required="">
                     <mat-icon class="icon-eye" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                         'visibility'}}</mat-icon>
-                    <div class="text-three text-position-response"
-                        *ngIf="!registerModel.formGroupRegister.controls['jobseekerPassword'].valid">
-                        <span style="color: #EB5757;">
-                            Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
-                            more characters
-                        </span>
-                    </div>
+                        <div *ngIf="f['jobseekerPassword'] && (f['jobseekerPassword'].touched || f['jobseekerPassword'].dirty)  && 
+                        !f['jobseekerPassword'].valid">
+                            <div *ngIf="f['jobseekerPassword'].errors">
+                                <div class="text-three text-position-response"
+                                *ngIf="!registerModel.formGroupRegister.controls['jobseekerPassword'].valid">
+                                    <span style="color: #EB5757;">
+                                        Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
+                                        more characters
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <p class="text-secondary text-gray-900 text-position-response">Re-enter Password</p>
                 <div class="form-group">
@@ -59,10 +79,15 @@
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9_]).{8,}" required="">
                     <mat-icon class="icon-eye2" matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' :
                         'visibility'}}</mat-icon>
-                    <div class="text-three text-position-response2" *ngIf="registerModel.passwordMatchError()"
-                        role="alert">
-                        <span style="color: #EB5757;"> Password does not match</span>
-                    </div>
+                        <div *ngIf="f['jobseekerConfirmPassword'] && (f['jobseekerConfirmPassword'].touched || f['jobseekerConfirmPassword'].dirty)  && 
+                        !f['jobseekerConfirmPassword'].valid">
+                            <div *ngIf="f['jobseekerConfirmPassword'].errors">
+                                <div class="text-three text-position-response2" *ngIf="registerModel.passwordMatchError()"
+                                    role="alert">
+                                    <span style="color: #EB5757;"> Password does not match</span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="d-grid gap-2 text-position-response2">
                     <button (click)="toggleLoading()" class="font-style-btn btn btn-primary btn-user">

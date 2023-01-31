@@ -17,6 +17,6 @@ export class VerifyEmailService {
     const params = new HttpParams()
       .set('jobseekerEmail', body.jobseekerEmail);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/resend', params);
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/resend', params);
   }
 }

@@ -86,7 +86,7 @@
         </div>
 
         <div class="section-white"
-            *ngFor="let job of jobFindModel.recentJobs | paginate: { itemsPerPage: 4, currentPage: page }">
+            *ngFor="let job of jobFindModel.recentJobs | paginate: { itemsPerPage: 15, currentPage: page }">
             <div class="card border-0">
                 <div class="section-title">
                     <div class="row">
@@ -108,9 +108,9 @@
                                             {{job.jobPosition}}</span>
                                         </a>
                                     </h5>
-                                    <a href="" class="recruiter-company">
+                                    <p href="" class="recruiter-company">
                                         {{ job.recruiterCompany }}
-                                    </a>
+                                    </p>
                                     <p class="text-secondary pt-2">{{ job.jobAddress }}</p>
                                     <p>Rp {{ job.jobSalary }}</p>
                                     <span class="text-secondary">{{ job.createdAt }}</span>

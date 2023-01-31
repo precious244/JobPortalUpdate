@@ -5,24 +5,25 @@
             <button (click)="activeModal.dismiss('Cross click')" type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
         </div>
-        <form action="">
+        <form [formGroup]="form" (ngSubmit)="upload()">
             <div class="modal-body text-center">
                 <div class="row">
                     <label class="form-label">Top Skills</label>
-                    <ng-multiselect-dropdown [placeholder]="'Select your Skills'" value="skillId" [settings]="dropdownSettings"
-                        [data]="editSkillsModel.allSkills" [(ngModel)]="editSkillsModel.userProfile"
-                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (enableCheckAll)="false">
+                    <ng-multiselect-dropdown formControlName="payloads" [placeholder]="'Select your Skills'"
+                        value="skillId" [settings]="dropdownSettings" [data]="editSkillsModel.allSkills"
+                        [(ngModel)]="editSkillsModel.userProfile" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)" (enableCheckAll)="false">
                     </ng-multiselect-dropdown>
                 </div>
             </div>
+            <div class="modal-footer border-0">
+                <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary rounded-pill px-5">
+                    Submit
+                </button>
+            </div>
         </form>
-        <div class="modal-footer border-0">
-            <button (click)="activeModal.dismiss('Cross click')" class="btn btn-outline-primary rounded-pill px-5">
-                Cancel
-            </button>
-            <button (click)="upload()" class="btn btn-primary rounded-pill px-5">
-                Submit
-            </button>
-        </div>
     </div>
 </div>

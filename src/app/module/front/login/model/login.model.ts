@@ -2,7 +2,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 export class LoginModel {
     formGroupLogin = new FormGroup({
-        jobseekerEmail: new FormControl("", [Validators.required, Validators.email, Validators.minLength(8)]),
+        jobseekerEmail: new FormControl("", [Validators.required, Validators.email]),
         jobseekerPassword: new FormControl("", [Validators.required, Validators.minLength(8)]),
         jobseekerConfirmPassword: new FormControl("", [Validators.required, Validators.minLength(8)]),
         token: new FormControl("", [Validators.required])

@@ -5,6 +5,8 @@ import { ProfileModel } from 'src/app/module/admin/profile/model/profile.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { EditSkillsModel } from './model/edit-skills.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AddSalaryService } from 'src/app/services/add-salary/add-salary.service';
 
 @Component({
   selector: 'app-modal-edit-skills',
@@ -27,13 +29,16 @@ export class ModalEditSkillsComponent implements OnInit {
   skillsSet: any = {};
   selectedOption: unknown;
   submitted: boolean = false;
+  form!: FormGroup;
 
   constructor(
     public activeModal: NgbActiveModal,
     public readonly authService: AuthService,
     public readonly profileService: ProfileService,
     public readonly router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private readonly salaryService: AddSalaryService,
   ) { }
 
   ngOnInit(): void {
@@ -64,28 +69,28 @@ export class ModalEditSkillsComponent implements OnInit {
       textField: 'skillName',
       enableCheckAll: false
     };
+
+    this.form = this.fb.group({
+      jobseekerId: this.userData.jobseekerId,
+      payloads: [this.selectedItems]
+    });
   }
 
   onItemSelect(ev: any) {
-    console.log(ev.skillId);
+    console.log(ev);
   }
   onSelectAll(ev: any) {
     console.log(ev);
   }
 
   upload() {
-    this.profileService.getAllSkills().subscribe(
-        (response: any) => {
-          var skillId = response.data[0]
-          this.profileModel.editSkillModelForm.controls['skillId'].setValue(skillId)
-          this.profileModel.editSkillModelForm.controls['jobseekerId'].setValue(this.userData.jobseekerId)
-          console.log(this.profileModel.editSkillModelForm.value)
-          this.profileService.editSkill(this.profileModel.editSkillModelForm.value).subscribe(
-            (response: any) => {
-              this.profileService.editSkill(response.data)
-              this.submitted = true
-              // this.activeModal.dismiss('Cross click')
-            });
-        })}
+    this.profileService.editSkill(this.form.value).subscribe(
+      (response: any) => {
+        this.salaryService.saveData(response.data)
+        this.submitted = true
+        this.activeModal.dismiss('Cross click')
+        window.location.reload();
+      })
+  }
 
 }

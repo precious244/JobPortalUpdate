@@ -125,7 +125,7 @@
                     <div class="col-md-12">
                         <label class="form-label">Achievements, Activities/Societies, or Descriptions
                             <i class="text-secondary">(Optional)</i></label>
-                            <textarea [(ngModel)]="education.educationDescription" cols="92" rows="15" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="educationDescription"></textarea>
+                            <textarea class="form-control fb-multiline-text" [(ngModel)]="education.educationDescription" class="form-control" cols="92" rows="10" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="educationDescription"></textarea>
                             <div>
                                 {{numberOfCharacters1}} / {{maxNumberOfCharacters}}
                             </div>

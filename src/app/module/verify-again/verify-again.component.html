@@ -16,10 +16,15 @@
                             <input formControlName="jobseekerEmail" type="email" class="form-control form-control-user"
                                 id="exampleInputEmail" aria-describedby="emailHelp" placeholder="yourpersonal@mail.com"
                                 required>&nbsp;
-                            <div class="text-four"
-                                *ngIf="!verifModel.formGroupRegister.controls['jobseekerEmail'].valid">
-                                <span style="color: #EB5757;">A valid email is required</span>
-                            </div>
+                                <div *ngIf="f['jobseekerEmail'] && (f['jobseekerEmail'].touched || f['jobseekerEmail'].dirty)  && 
+                                !f['jobseekerEmail'].valid">
+                                    <div *ngIf="f['jobseekerEmail'].errors">
+                                        <div class="text-four"
+                                            *ngIf="!verifModel.formGroupRegister.controls['jobseekerEmail'].valid">
+                                            <span style="color: #EB5757;">A valid email is required</span>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <div class="d-grid gap-2 button">
                             <button (click)="toggleLoading()" class="font-style-btn btn btn-primary btn-user">

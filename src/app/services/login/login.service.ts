@@ -15,14 +15,14 @@ export class LoginService {
       .set('jobseekerEmail', body.jobseekerEmail)
       .set('jobseekerPassword', body.jobseekerPassword);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/login', params);
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/login', params);
   }
 
   public forgotPassword(body: any): Observable<any> {
     const params = new HttpParams()
       .set('jobseekerEmail', body.jobseekerEmail);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/reset', params);
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/reset', params);
   }
 
   public changePassword(body: any): Observable<any> {
@@ -31,7 +31,7 @@ export class LoginService {
       .set('password', body.password)
       .set('confirmPassword', body.confirmPassword);
 
-    return this.http.post('http://54.251.83.205:9091/api/v1/jobseeker/change-password', params);
+    return this.http.post('http://54.255.4.75:9091/api/v1/jobseeker/change-password', params);
   }
 
   saveChangePasswordData(data: any) {
@@ -41,6 +41,6 @@ export class LoginService {
   public getUserProfile(body: any): Observable<unknown> {
     const params = new HttpParams()
       .set('jobseekerId', body.jobseekerId);
-    return this.http.get('http://54.251.83.205:9091/api/v1/jobseeker/user', { params: params });
+    return this.http.get('http://54.255.4.75:9091/api/v1/jobseeker/user', { params: params });
   }
 }

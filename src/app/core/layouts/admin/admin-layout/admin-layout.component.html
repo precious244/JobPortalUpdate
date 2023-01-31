@@ -40,16 +40,16 @@
                     <li class="nav-item dropdown username">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" class="d-flex">
-                            <span>{{ userData.jobseekerFirstName }}</span>
+                            <span>{{ profile.jobseekerFirstName }}</span>
                             &nbsp;
-                            <span>{{ userData.jobseekerLastName }}</span>
+                            <span>{{ profile.jobseekerLastName }}</span>
                             <img src="assets/dropdown.svg" alt="" height="25px">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li> <a class="dropdown-item" routerLink="settings/{{userData.jobseekerId}}"><img
-                                        src="assets/setting.svg" alt=""> Settings</a></li>
-                            <li> <a class="dropdown-item text-danger" (click)="logout()"><img
-                                        src="assets/logout.svg" alt=""> Logout</a></li>
+                            <!-- <li> <a class="dropdown-item" routerLink="settings/{{userData.jobseekerId}}"><img
+                                        src="assets/setting.svg" alt=""> Settings</a></li> -->
+                            <li> <a class="dropdown-item text-danger" (click)="logout()"><img src="assets/logout.svg"
+                                        alt=""> Logout</a></li>
                         </ul>
                     </li>
                 </ul>

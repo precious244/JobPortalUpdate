@@ -41,9 +41,10 @@ export class ProfileComponent implements OnInit {
   isUpload: unknown;
   onUpload: unknown;
   countryInfo: any[] = [];
-  countryValue:any;
-  countryName:any;
+  countryValue: any;
+  countryName: any;
   expModel = new EditExperienceModel();
+  k: any;
 
   constructor(
     public readonly loginService: LoginService,
@@ -94,15 +95,15 @@ export class ProfileComponent implements OnInit {
     this.getCountries();
   }
 
-  getCountries(){
+  getCountries() {
     this.profileService.allCountries().
-    subscribe(
-      data2 => {
-        this.countryInfo=data2.Countries
-      },
-      err => console.log(err),
-      () => console.log('complete')
-    )
+      subscribe(
+        data2 => {
+          this.countryInfo = data2.Countries
+        },
+        err => console.log(err),
+        () => console.log('complete')
+      )
   }
 
   openAddExperience() {
@@ -110,32 +111,62 @@ export class ProfileComponent implements OnInit {
       ModalAddExperienceComponent, { size: 'lg' }
     );
     modal.componentInstance.data = this.profileModel.userProfile;
-    modal.componentInstance.deleteExp = () => { this.deleteExp() }
   }
 
   roleData = [];
 
-  deleteExp() { 
-    this.expModel.editExperience.controls['jobseekerId'].setValue(this.userData.jobseekerId);
-    this.profileService.getExpList(this.expModel.editExperience.value).subscribe(
-        (response: any) => {
-          this.roleData = response['data'];
-          // console.log(response['data'][0]['experienceId'])
-          var experienceId = response.data[0]['experienceId']
-          this.expModel.editExperience.controls['experienceId'].setValue(experienceId)
-          console.log(this.expModel.editExperience.value, experienceId)
-          this.profileService.deleteExp(this.expModel.editExperience.value).subscribe(
-            (response: any) => {
-              this.salaryService.saveData(response.data)
-              this.submitted = true
-              window.location.reload();
-      })})}
-
-  openEditExperience() {
+  openEditExperience(j:any) {
+    this.profileService.setIndex(j)
     const modal = this.modalService.open(
       ModalEditExperienceComponent, { size: 'lg' }
     );
     modal.componentInstance.data = this.profileModel.userProfile;
+    modal.componentInstance.deleteExp = () => { this.deleteExp(j) }
+  }
+
+  deleteExp(j:any) {
+    this.profileService.setIndex(j)
+    this.expModel.editExperience.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+    this.profileService.getExpList(this.expModel.editExperience.value).subscribe(
+      (response: any) => {
+        var index = this.profileService.getIndex()
+        var experienceId = response.data[index]['experienceId']
+        this.expModel.editExperience.controls['experienceId'].setValue(experienceId)
+        console.log(this.expModel.editExperience.value, experienceId)
+        this.profileService.deleteExp(this.expModel.editExperience.value).subscribe(
+          (response: any) => {
+            this.salaryService.saveData(response.data)
+            this.submitted = true
+            window.location.reload();
+          })
+      })
+  }
+
+  openEditEducation(i: any) {
+    this.profileService.setIndex(i)
+    const modal = this.modalService.open(
+      ModalEditEducationComponent, { size: 'lg' }
+    );
+    modal.componentInstance.data = this.profileModel.userProfile;
+    modal.componentInstance.deleteEdu = () => { this.deleteEdu(i) }
+  }
+
+  deleteEdu(i: any) {
+    this.profileService.setIndex(i)
+    this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+    this.profileService.getEduList(this.educationModel.formGroupAddEducation.value).subscribe(
+      (response: any) => {
+        var index = this.profileService.getIndex()
+        var educationId = response.data[index]['educationId']
+        this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
+        console.log(this.educationModel.formGroupAddEducation.value, educationId)
+        this.profileService.deleteEdu(this.educationModel.formGroupAddEducation.value).subscribe(
+          (response: any) => {
+            this.salaryService.saveData(response.data)
+            this.submitted = true
+            window.location.reload();
+          })
+      })
   }
 
   openAddEducation() {
@@ -143,33 +174,8 @@ export class ProfileComponent implements OnInit {
       ModalAddEducationComponent, { size: 'lg' }
     );
     modal.componentInstance.data = this.profileModel.userProfile;
-    modal.componentInstance.deleteEdu = () => { this.deleteEdu() }
   }
 
-  roleData2 = [];
-
-  deleteEdu() { 
-    this.educationModel.formGroupAddEducation.controls['jobseekerId'].setValue(this.userData.jobseekerId);
-    this.profileService.getEduList(this.educationModel.formGroupAddEducation.value).subscribe(
-        (response: any) => {
-          this.roleData2 = response['data'];
-          // console.log(response['data'][0]['educationId'])
-          var educationId = response.data[0]['educationId']
-          this.educationModel.formGroupAddEducation.controls['educationId'].setValue(educationId)
-          console.log(this.educationModel.formGroupAddEducation.value, educationId)
-          this.profileService.deleteEdu(this.educationModel.formGroupAddEducation.value).subscribe(
-            (response: any) => {
-              this.salaryService.saveData(response.data)
-              this.submitted = true
-              window.location.reload();
-      })})}
-
-  openEditEducation() {
-    const modal = this.modalService.open(
-      ModalEditEducationComponent, { size: 'lg' }
-    );
-    modal.componentInstance.data = this.profileModel.userProfile;
-  }
   openEditPersonalInformation() {
     const modal = this.modalService.open(
       ModalPersonalInformationComponent, { size: 'lg' });
@@ -189,23 +195,24 @@ export class ProfileComponent implements OnInit {
         }
         this.salaryService.saveData(event.data)
       })
-     }
+  }
 
-  resetFileUploader() { 
-  this.modalPersonalModel.profileModelForm.controls['jobseekerId'].setValue(this.userData.jobseekerId);
-  console.log(this.modalPersonalModel.profileModelForm.value);
-  this.profileService.deleteImage(this.modalPersonalModel.profileModelForm.value).subscribe(
+  resetFileUploader() {
+    this.modalPersonalModel.profileModelForm.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+    console.log(this.modalPersonalModel.profileModelForm.value);
+    this.profileService.deleteImage(this.modalPersonalModel.profileModelForm.value).subscribe(
       (response: any) => {
         this.isUpload = false;
       },
       (error) => {
         this.isUpload = true;
       }),
-    (error: any) => {
-      this.onUpload = true;
-    }}
+      (error: any) => {
+        this.onUpload = true;
+      }
+  }
 
-     openEditSkills() {
+  openEditSkills() {
     const modal = this.modalService.open(
       ModalEditSkillsComponent, { size: 'lg' }
     );
@@ -229,20 +236,20 @@ export class ProfileComponent implements OnInit {
           this.isUploaded = true;
         }
       })
-     }
+  }
 
-  resetCv() { 
-  this.modalPersonalModel.profileModelForm.controls['jobseekerId'].setValue(this.userData.jobseekerId);
-  console.log(this.modalPersonalModel.profileModelForm.value);
-  this.uploadCvService.deleteCv(this.modalPersonalModel.profileModelForm.value).subscribe(
+  resetCv() {
+    this.modalPersonalModel.profileModelForm.controls['jobseekerId'].setValue(this.userData.jobseekerId);
+    console.log(this.modalPersonalModel.profileModelForm.value);
+    this.uploadCvService.deleteCv(this.modalPersonalModel.profileModelForm.value).subscribe(
       (response: any) => {
         this.isUploaded = false;
       },
       (error) => {
         this.isUpload = true;
       })
-    }
-     
+  }
+
   openUploadCv() {
     const modal = this.modalService.open(
       ProfileUploadCvComponent, { size: 'md' }
@@ -251,6 +258,6 @@ export class ProfileComponent implements OnInit {
     modal.componentInstance.file = this.profileModel.uploadCVForm.controls['jobseekerResume'];
     modal.componentInstance.saveCv = () => { this.saveCv() }
     modal.componentInstance.resetCv = () => { this.resetCv() }
-    
+
   }
 }

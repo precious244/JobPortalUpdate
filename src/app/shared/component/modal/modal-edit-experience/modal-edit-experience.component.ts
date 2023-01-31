@@ -24,6 +24,7 @@ export class ModalEditExperienceComponent {
   startPeriodYearOptions: number[] = [];
   endPeriodYearOptions: number[] = [];
   chosenYearDate: Date | undefined;
+  value: any = [];
 
   @Input()
   maxNumberOfCharacters = 2000;
@@ -76,10 +77,9 @@ export class ModalEditExperienceComponent {
       this.expModel.editExperience.controls['jobseekerId'].setValue(this.userData.jobseekerId);
       this.profileService.getExpList(this.expModel.editExperience.value).subscribe(
           (response: any) => {
-            this.roleData3 = response['data'];
-            var experienceId = response.data[0]['experienceId']
+            var index = this.profileService.getIndex()
+            var experienceId = response.data[index]['experienceId']
             this.expModel.editExperience.controls['experienceId'].setValue(experienceId)
-            console.log(this.expModel.editExperience.value)
             this.profileService.getExpDetail(this.expModel.editExperience.value).subscribe(
               (data:any) => {
                 this.expModel.dataExperience = data.data;

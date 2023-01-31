@@ -13,10 +13,11 @@ import { LoginModel } from './model/login.model';
 export class LoginComponent implements OnInit {
 
   hide = true;
-  public showPassword: boolean = false;
+  showPassword: boolean = false;
   data: any;
   loginModel = new LoginModel();
   isLoading = false;
+  formSubmitted = false;
 
   toggleLoading = () => {
     this.isLoading = true;

@@ -127,11 +127,22 @@
                             <option *ngFor="let year of endPeriodYearOptions" [value]="year">{{year}}</option>
                         </select>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-check me-auto position">
+                            <input formControlName="isPresent"
+                                [ngModel]="value.selected == 1 ? 1 : value.selected == 0 ? 0 : 0"
+                                (ngModelChange)="value.selected = $event ? 1 : 0" class="form-check-input" type="checkbox"
+                                id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Present
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="form-label">Description</label>
-                        <textarea [(ngModel)]="experience.jobDescription" cols="92" rows="15" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="jobDescription"></textarea>
+                        <textarea class="form-control fb-multiline-text" [(ngModel)]="experience.jobDescription" cols="92" rows="15" (keyup)="onKeyUp($event)" maxlength="2000" formControlName="jobDescription"></textarea>
                         <div>
                             {{numberOfCharacters1}} / {{maxNumberOfCharacters}}
                         </div>

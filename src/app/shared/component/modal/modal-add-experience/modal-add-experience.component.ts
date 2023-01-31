@@ -13,6 +13,7 @@ import { EditExperienceModel } from './model/edit-experience.model';
 export class ModalAddExperienceComponent implements OnInit {
   
   expModel = new EditExperienceModel();
+  maxChars = 2000;
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
@@ -20,6 +21,7 @@ export class ModalAddExperienceComponent implements OnInit {
   @Input() data: any;
   profile: any = {};
   submitted: boolean = false;
+  value: any = [];
 
   currentYear = new Date().getFullYear();
   startPeriodYearOptions: number[] = [];
@@ -111,6 +113,10 @@ onKeyUp(event: any): void {
     event.target.value = event.target.value.slice(0, this.maxNumberOfCharacters);
     this.numberOfCharacters1 = this.maxNumberOfCharacters;
   }
+}
+
+checkValue(event: any){
+  console.log(event);
 }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -33,6 +34,10 @@ export class ChangePasswordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.changePasswordModel.formGroupChangePassword.controls;
   }
 
   newPassword() {

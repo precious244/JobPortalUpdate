@@ -5,6 +5,7 @@ import { RegisterModel } from './model/register.model';
 import { VerifyEmailService } from 'src/app/services/verify-email/verify-email.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from 'src/app/services/loader/loader.service';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -59,6 +60,11 @@ export class SignUpComponent implements OnInit {
       }
     )
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.registerModel.formGroupRegister.controls;
+  }
+
 
   verifyEmail() {
     this.verifyEmailService.sendVerificationMail(this.registerModel.formGroupRegister.value).subscribe(
